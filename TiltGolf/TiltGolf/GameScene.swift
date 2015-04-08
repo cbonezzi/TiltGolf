@@ -7,16 +7,51 @@
 //
 
 import SpriteKit
+import CoreMotion
+
+let BallCategoryName = "ball"
+let PaddleCategoryName = "paddle"
+let BlockCategoryName = "block"
+let BlockNodeCategoryName = "blockNode"
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        //let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        //myLabel.text = "Hello, World!";
+        //myLabel.fontSize = 65;
+        //myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        let kPlayerSpeed = 250
+        let ball = SKSpriteNode(imageNamed: "ball")
+        let wall1 = SKSpriteNode(imageNamed: "blockNode")
+        ball.xScale = 1.0
+        ball.yScale = 1.0
+        ball.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        self.addChild(myLabel)
+        
+        self.addChild(ball)
+        
+        let motionManager: CMMotionManager = CMMotionManager()
+        if (motionManager.accelerometerAvailable) {
+            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue()) {
+                (data, error) in
+                let currentX = ball.position.x
+                let currentY = ball.position.y
+                if(data.acceleration.y < -0.25) { // tilting the device to the right
+                    var destX = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
+                    var destY = CGFloat(currentY)
+                    motionManager.accelerometerActive == true;
+                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
+                    ball.runAction(action)
+                } else if (data.acceleration.y > 0.25) { // tilting the device to the left
+                    var destX = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
+                    var destY = CGFloat(currentY)
+                    motionManager.accelerometerActive == true;
+                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
+                    ball.runAction(action)
+                }
+            }
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -27,8 +62,8 @@ class GameScene: SKScene {
             
             let sprite = SKSpriteNode(imageNamed:"Spaceship")
             
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
+            sprite.xScale = 0.1
+            sprite.yScale = 0.1
             sprite.position = location
             
             let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
