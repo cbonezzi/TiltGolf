@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D66F9751AD5C0F0003FEA03 /* FrontScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D66F9741AD5C0F0003FEA03 /* FrontScreenViewController.swift */; };
 		DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */; };
 		DB189C6F1ACCDFF3001F2F94 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB189C6E1ACCDFF3001F2F94 /* GameScene.sks */; };
 		DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C701ACCDFF3001F2F94 /* GameScene.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D66F9741AD5C0F0003FEA03 /* FrontScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontScreenViewController.swift; sourceTree = "<group>"; };
 		DB189C671ACCDFF3001F2F94 /* TiltGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiltGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB189C6B1ACCDFF3001F2F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				DB189C771ACCDFF3001F2F94 /* Images.xcassets */,
 				DB189C791ACCDFF3001F2F94 /* LaunchScreen.xib */,
 				DB189C6A1ACCDFF3001F2F94 /* Supporting Files */,
+				9D66F9741AD5C0F0003FEA03 /* FrontScreenViewController.swift */,
 			);
 			path = TiltGolf;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			files = (
 				DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */,
 				DB189C731ACCDFF3001F2F94 /* GameViewController.swift in Sources */,
+				9D66F9751AD5C0F0003FEA03 /* FrontScreenViewController.swift in Sources */,
 				DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TiltGolf/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TiltGolf/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -413,6 +419,7 @@
 				DB189C8C1ACCDFF3001F2F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB189C8D1ACCDFF3001F2F94 /* Build configuration list for PBXNativeTarget "TiltGolfTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +428,7 @@
 				DB189C8F1ACCDFF3001F2F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
