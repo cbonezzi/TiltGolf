@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  TiltGolf
 //
-//  Created by Cesar on 4/1/15.
+//  Created by Cesar and gunnar on 4/1/15.
 //  Copyright (c) 2015 iOSClass. All rights reserved.
 //
 
