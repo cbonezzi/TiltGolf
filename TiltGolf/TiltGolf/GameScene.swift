@@ -21,6 +21,12 @@ class GameScene: SKScene {
         //myLabel.text = "Hello, World!";
         //myLabel.fontSize = 65;
         //myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        
+        // bounding ball to the visible frame (phone borders)
+        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        borderBody.friction = 0
+        self.physicsBody = borderBody
+        
         let kPlayerSpeed = 250
         let ball = SKSpriteNode(imageNamed: "ball")
         let wall1 = SKSpriteNode(imageNamed: "blockNode")
@@ -57,21 +63,21 @@ class GameScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.1
-            sprite.yScale = 0.1
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+//        for touch: AnyObject in touches {
+//            let location = touch.locationInNode(self)
+//            
+//            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+//            
+//            sprite.xScale = 0.1
+//            sprite.yScale = 0.1
+//            sprite.position = location
+//            
+//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
+//            
+//            sprite.runAction(SKAction.repeatActionForever(action))
+//            
+//            self.addChild(sprite)
+//        }
     }
    
     override func update(currentTime: CFTimeInterval) {
