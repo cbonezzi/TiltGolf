@@ -25,6 +25,7 @@ class GameScene: SKScene {
         // bounding ball to the visible frame (phone borders)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         borderBody.friction = 0
+        physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsBody = borderBody
         
         let kPlayerSpeed = 250
@@ -34,7 +35,7 @@ class GameScene: SKScene {
         ball.yScale = 1.0
         ball.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        
+       // ball.speed = 0.0;
         
         //self.addChild(ball)
         
