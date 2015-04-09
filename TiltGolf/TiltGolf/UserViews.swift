@@ -12,10 +12,14 @@ import SpriteKit
 
 class UserViews: UIViewController {
     
-    @IBAction func startgamePressed(sender: UIButton) {
+    @IBAction func startGamePressed(sender: UIButton) {
         self.performSegueWithIdentifier("selectlevel_segue", sender: self)
     }
     
+    @IBAction func instructionsPressed() {
+        self.performSegueWithIdentifier("selectlevel_segue", sender: self)
+        
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "selectlevel_segue") {
             var childVC : SelectLevelViewController = segue.destinationViewController as SelectLevelViewController
