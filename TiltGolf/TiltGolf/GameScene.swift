@@ -28,14 +28,15 @@ class GameScene: SKScene {
         self.physicsBody = borderBody
         
         let kPlayerSpeed = 250
-        let ball = SKSpriteNode(imageNamed: "ball")
+        let ball = childNodeWithName(BallCategoryName) as SKSpriteNode //SKSpriteNode(imageNamed: "ball")
         let wall1 = SKSpriteNode(imageNamed: "blockNode")
         ball.xScale = 1.0
         ball.yScale = 1.0
         ball.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
         
-        self.addChild(ball)
+        
+        //self.addChild(ball)
         
         let motionManager: CMMotionManager = CMMotionManager()
         if (motionManager.accelerometerAvailable) {
@@ -44,13 +45,26 @@ class GameScene: SKScene {
                 let currentX = ball.position.x
                 let currentY = ball.position.y
                 if(data.acceleration.y < -0.25) { // tilting the device to the right
-                    var destX = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
-                    var destY = CGFloat(currentY)
+                    var destY = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentY))
+                    var destX = CGFloat(currentY)
                     motionManager.accelerometerActive == true;
                     let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
                     ball.runAction(action)
                 } else if (data.acceleration.y > 0.25) { // tilting the device to the left
-                    var destX = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
+                    var destY = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentY))
+                    var destX = CGFloat(currentY)
+                    motionManager.accelerometerActive == true;
+                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
+                    ball.runAction(action)
+                }
+                else if(data.acceleration.x < -0.25) { // tilting the device to the right
+                    var destX = (CGFloat(data.acceleration.x) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
+                    var destY = CGFloat(currentY)
+                    motionManager.accelerometerActive == true;
+                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
+                    ball.runAction(action)
+                } else if (data.acceleration.x > 0.25) { // tilting the device to the left
+                    var destX = (CGFloat(data.acceleration.x) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
                     var destY = CGFloat(currentY)
                     motionManager.accelerometerActive == true;
                     let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
