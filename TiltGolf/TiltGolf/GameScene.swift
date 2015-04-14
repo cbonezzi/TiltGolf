@@ -15,7 +15,9 @@ let BlockCategoryName = "block"
 let BlockNodeCategoryName = "blockNode"
 
 class GameScene: SKScene {
+   
     override func didMoveToView(view: SKView) {
+        //this is only callled once
         /* Setup your scene here */
         //let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         //myLabel.text = "Hello, World!";
@@ -34,11 +36,11 @@ class GameScene: SKScene {
         ball.xScale = 1.0
         ball.yScale = 1.0
         ball.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
        // ball.speed = 0.0;
         
         //self.addChild(ball)
         
+        //this is called everytime the accerlerometer changes
         let motionManager: CMMotionManager = CMMotionManager()
         if (motionManager.accelerometerAvailable) {
             motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue()) {
@@ -76,7 +78,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
+        /* Called when you touch the screen in the game*/
         
 //        for touch: AnyObject in touches {
 //            let location = touch.locationInNode(self)
@@ -96,6 +98,6 @@ class GameScene: SKScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        /* Called before each frame is rendered??? */
     }
 }
