@@ -13,91 +13,108 @@ let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
 let BlockNodeCategoryName = "blockNode"
+let MaxPlayerAcceleration: CGFloat = 400
+let MaxPlayerSpeed: CGFloat = 200
 
 class GameScene: SKScene {
+    
+    let ball = SKSpriteNode(imageNamed: BallCategoryName)
+    var ballAcceleration = CGVector(dx: 0, dy: 0)
+    var ballVelocity = CGVector(dx: 0, dy: 0)
+    var lastUpdateTime: CFTimeInterval = 0
+    
+    var accelerometerX: UIAccelerationValue = 0
+    var accelerometerY: UIAccelerationValue = 0
+    
+    let motionManager = CMMotionManager()
+    
+    deinit {
+        stopMonitoringAcceleration()
+    }
+    
+    
    
     override func didMoveToView(view: SKView) {
-        //this is only callled once
-        /* Setup your scene here */
-        //let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        //myLabel.text = "Hello, World!";
-        //myLabel.fontSize = 65;
-        //myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        // bounding ball to the visible frame (phone borders)
-        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        borderBody.friction = 0
-        physicsWorld.gravity = CGVectorMake(0, 0)
-        self.physicsBody = borderBody
+        ball.position = CGPoint(x: size.width - 50, y: 60)
+        addChild(ball)
         
-        let kPlayerSpeed = 250
-        let ball = childNodeWithName(BallCategoryName) as SKSpriteNode //SKSpriteNode(imageNamed: "ball")
-        let wall1 = SKSpriteNode(imageNamed: "blockNode")
-        ball.xScale = 1.0
-        ball.yScale = 1.0
-        ball.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-       // ball.speed = 0.0;
+        startMonitoringAcceleration()
         
-        //self.addChild(ball)
+        //        //this is only callled once
+        //        /* Setup your scene here */
+        //        //let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        //        //myLabel.text = "Hello, World!";
+        //        //myLabel.fontSize = 65;
+        //        //myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        //
+        //        // bounding ball to the visible frame (phone borders)
+        //        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        //        borderBody.friction = 0
+        //        physicsWorld.gravity = CGVectorMake(0, 0)
+        //        self.physicsBody = borderBody
+    }
+    func startMonitoringAcceleration() {
         
-        //this is called everytime the accerlerometer changes
-        let motionManager: CMMotionManager = CMMotionManager()
-        if (motionManager.accelerometerAvailable) {
-            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue()) {
-                (data, error) in
-                let currentX = ball.position.x
-                let currentY = ball.position.y
-                if(data.acceleration.y < -0.25) { // tilting the device to the right
-                    var destY = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentY))
-                    var destX = CGFloat(currentY)
-                    motionManager.accelerometerActive == true;
-                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
-                    ball.runAction(action)
-                } else if (data.acceleration.y > 0.25) { // tilting the device to the left
-                    var destY = (CGFloat(data.acceleration.y) * CGFloat(kPlayerSpeed) + CGFloat(currentY))
-                    var destX = CGFloat(currentY)
-                    motionManager.accelerometerActive == true;
-                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
-                    ball.runAction(action)
-                }
-                else if(data.acceleration.x < -0.25) { // tilting the device to the right
-                    var destX = (CGFloat(data.acceleration.x) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
-                    var destY = CGFloat(currentY)
-                    motionManager.accelerometerActive == true;
-                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
-                    ball.runAction(action)
-                } else if (data.acceleration.x > 0.25) { // tilting the device to the left
-                    var destX = (CGFloat(data.acceleration.x) * CGFloat(kPlayerSpeed) + CGFloat(currentX))
-                    var destY = CGFloat(currentY)
-                    motionManager.accelerometerActive == true;
-                    let action = SKAction.moveTo(CGPointMake(destX, destY), duration: 1)
-                    ball.runAction(action)
-                }
-            }
+        if motionManager.accelerometerAvailable {
+            motionManager.startAccelerometerUpdates()
+            NSLog("accelerometer updates on...")
         }
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when you touch the screen in the game*/
+    func stopMonitoringAcceleration() {
         
-//        for touch: AnyObject in touches {
-//            let location = touch.locationInNode(self)
-//            
-//            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-//            
-//            sprite.xScale = 0.1
-//            sprite.yScale = 0.1
-//            sprite.position = location
-//            
-//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-//            
-//            sprite.runAction(SKAction.repeatActionForever(action))
-//            
-//            self.addChild(sprite)
-//        }
+        if motionManager.accelerometerAvailable && motionManager.accelerometerActive {
+            motionManager.stopAccelerometerUpdates()
+            NSLog("accelerometer updates off...")
+        }
+    }
+    
+    func updateBallAccelerationFromMotionManager() {
+        
+        if let acceleration = motionManager.accelerometerData?.acceleration {
+            
+            let FilterFactor = 0.75
+            
+            accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor)
+            accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor)
+            
+            ballAcceleration.dy = CGFloat(accelerometerY) * -MaxPlayerAcceleration
+            ballAcceleration.dx = CGFloat(accelerometerX) * MaxPlayerAcceleration
+        }
+    }
+    func updateBallMovement(dt: CFTimeInterval) {
+        
+        // 1
+        ballVelocity.dx = ballVelocity.dx + ballAcceleration.dx * CGFloat(dt)
+        ballVelocity.dy = ballVelocity.dy + ballAcceleration.dy * CGFloat(dt)
+        
+        // 2
+        ballVelocity.dx = max(-MaxPlayerSpeed, min(MaxPlayerSpeed, ballVelocity.dx))
+        ballVelocity.dy = max(-MaxPlayerSpeed, min(MaxPlayerSpeed, ballVelocity.dy))
+        
+        // 3
+        var newX = ball.position.x + ballVelocity.dx * CGFloat(dt)
+        var newY = ball.position.y + ballVelocity.dy * CGFloat(dt)
+        
+        // 4
+        newX = min(size.width, max(0, newX));
+        newY = min(size.height, max(0, newY));
+        
+        ball.position = CGPoint(x: newX, y: newY)
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
     }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered??? */
+        // to compute velocities we need delta time to multiply by points per second
+        // SpriteKit returns the currentTime, delta is computed as last called time - currentTime
+        let deltaTime = max(1.0/30, currentTime - lastUpdateTime)
+        lastUpdateTime = currentTime
+        
+        updateBallAccelerationFromMotionManager()
+        updateBallMovement(deltaTime)
     }
 }
