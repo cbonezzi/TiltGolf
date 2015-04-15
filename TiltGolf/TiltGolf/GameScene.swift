@@ -21,6 +21,9 @@ let BorderCollisionDamping: CGFloat = 0.7
 class GameScene: SKScene {
     
     let ball = SKSpriteNode(imageNamed: BallCategoryName)
+    let wall1 = SKSpriteNode(imageNamed: BlockCategoryName)
+    let wall2 = SKSpriteNode(imageNamed: BlockCategoryName)
+    let wall3 = SKSpriteNode(imageNamed: BlockCategoryName)
     var ballAcceleration = CGVector(dx: 0, dy: 0)
     var ballVelocity = CGVector(dx: 0, dy: 0)
     var lastUpdateTime: CFTimeInterval = 0
@@ -34,11 +37,16 @@ class GameScene: SKScene {
         stopMonitoringAcceleration()
     }
     
-    
    
     override func didMoveToView(view: SKView) {
-        
+
         //only happens once
+        
+        wall1.size=CGSize(width: 250, height: 100)
+        wall1.position =  CGPoint(x: 125, y: 400)
+        wall2.position =  CGPoint(x: size.width - 50, y: 60)
+        wall3.position =  CGPoint(x: size.width - 50, y: 60)
+        addChild(wall1)
         ball.position = CGPoint(x: size.width - 50, y: 60)
         addChild(ball)
         
@@ -105,6 +113,36 @@ class GameScene: SKScene {
         var collidedWithVerticalBorder = false
         var collidedWithHorizontalBorder = false
         
+        
+        if ballVelocity.dx < 0 && newX < (wall1.position.x + wall1.size.width/2) && newY < wall1.position.y + wall1.size.height/2 && newY > wall1.position.y - wall1.size.height/2 && newX > (wall1.position.x - wall1.size.width/2)
+        {
+           newX=wall1.position.x + wall1.size.width/2
+            collidedWithVerticalBorder = true
+            
+        }
+            
+        else if ballVelocity.dx > 0 && newX < (wall1.position.x + wall1.size.width/2) && newY < wall1.position.y + wall1.size.height/2 && newY > wall1.position.y - wall1.size.height/2 && newX > (wall1.position.x - wall1.size.width/2)
+        {
+            newX=wall1.position.x - wall1.size.width/2
+            collidedWithVerticalBorder = true
+            
+        }
+
+        if ballVelocity.dy < 0 && newY < (wall1.position.y + wall1.size.height/2) && newX < wall1.position.x + wall1.size.width/2 && newX > wall1.position.x - wall1.size.width/2 && newY > (wall1.position.y - wall1.size.height/2)
+        {
+            newY=wall1.position.y - wall1.size.height/2
+            collidedWithHorizontalBorder = true
+            
+        }
+            
+        else if ballVelocity.dy > 0 && newY < (wall1.position.y + wall1.size.height/2) && newX < wall1.position.x + wall1.size.width/2 && newX > wall1.position.x - wall1.size.width/2 && newY > (wall1.position.y - wall1.size.height/2)
+        {
+            newY=wall1.position.y + wall1.size.height/2
+            collidedWithHorizontalBorder = true
+            
+        }
+
+        
         if newX < 0 {
             newX = 0
             collidedWithVerticalBorder = true
@@ -135,11 +173,13 @@ class GameScene: SKScene {
             ballVelocity.dy = -ballVelocity.dy * BorderCollisionDamping
         }
         
+        
         ball.position = CGPoint(x: newX, y: newY)
         
         
     }
     
+    //if touch screen
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
     }
    
