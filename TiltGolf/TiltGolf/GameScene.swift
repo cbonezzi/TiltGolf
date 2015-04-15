@@ -13,8 +13,8 @@ let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
 let BlockNodeCategoryName = "blockNode"
-let MaxPlayerAcceleration: CGFloat = 400
-let MaxPlayerSpeed: CGFloat = 200
+let MaxBallAcceleration: CGFloat = 400
+let MaxBallSpeed: CGFloat = 200
 
 class GameScene: SKScene {
     
@@ -36,6 +36,7 @@ class GameScene: SKScene {
    
     override func didMoveToView(view: SKView) {
         
+        //only happens once
         ball.position = CGPoint(x: size.width - 50, y: 60)
         addChild(ball)
         
@@ -79,8 +80,8 @@ class GameScene: SKScene {
             accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor)
             accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor)
             
-            ballAcceleration.dy = CGFloat(accelerometerY) * -MaxPlayerAcceleration
-            ballAcceleration.dx = CGFloat(accelerometerX) * MaxPlayerAcceleration
+            ballAcceleration.dy = CGFloat(accelerometerY) * MaxBallAcceleration
+            ballAcceleration.dx = CGFloat(accelerometerX) * MaxBallAcceleration
         }
     }
     func updateBallMovement(dt: CFTimeInterval) {
@@ -90,8 +91,8 @@ class GameScene: SKScene {
         ballVelocity.dy = ballVelocity.dy + ballAcceleration.dy * CGFloat(dt)
         
         // 2
-        ballVelocity.dx = max(-MaxPlayerSpeed, min(MaxPlayerSpeed, ballVelocity.dx))
-        ballVelocity.dy = max(-MaxPlayerSpeed, min(MaxPlayerSpeed, ballVelocity.dy))
+        ballVelocity.dx = max(-MaxBallSpeed, min(MaxBallSpeed, ballVelocity.dx))
+        ballVelocity.dy = max(-MaxBallSpeed, min(MaxBallSpeed, ballVelocity.dy))
         
         // 3
         var newX = ball.position.x + ballVelocity.dx * CGFloat(dt)
