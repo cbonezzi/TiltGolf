@@ -15,6 +15,8 @@ let BlockCategoryName = "block"
 let BlockNodeCategoryName = "blockNode"
 let MaxBallAcceleration: CGFloat = 400
 let MaxBallSpeed: CGFloat = 200
+//percentage of energy ball retains after hitting wall .1 => 10% of energy retained
+let BorderCollisionDamping: CGFloat = 0.7
 
 class GameScene: SKScene {
     
@@ -99,10 +101,43 @@ class GameScene: SKScene {
         var newY = ball.position.y + ballVelocity.dy * CGFloat(dt)
         
         // 4
-        newX = min(size.width, max(0, newX));
-        newY = min(size.height, max(0, newY));
+      
+        var collidedWithVerticalBorder = false
+        var collidedWithHorizontalBorder = false
+        
+        if newX < 0 {
+            newX = 0
+            collidedWithVerticalBorder = true
+        } else if newX > size.width {
+            newX = size.width
+            collidedWithVerticalBorder = true
+        }
+        
+        if newY < 0 {
+            newY = 0
+            collidedWithHorizontalBorder = true
+        } else if newY > size.height {
+            newY = size.height
+            collidedWithHorizontalBorder = true
+        }
+        
+        if collidedWithVerticalBorder {
+            ballAcceleration.dx = -ballAcceleration.dx * BorderCollisionDamping
+            ballVelocity.dx = -ballVelocity.dx * BorderCollisionDamping
+            ballAcceleration.dy = ballAcceleration.dy * BorderCollisionDamping
+            ballVelocity.dy = ballVelocity.dy * BorderCollisionDamping
+        }
+        
+        if collidedWithHorizontalBorder {
+            ballAcceleration.dx = ballAcceleration.dx * BorderCollisionDamping
+            ballVelocity.dx = ballVelocity.dx * BorderCollisionDamping
+            ballAcceleration.dy = -ballAcceleration.dy * BorderCollisionDamping
+            ballVelocity.dy = -ballVelocity.dy * BorderCollisionDamping
+        }
         
         ball.position = CGPoint(x: newX, y: newY)
+        
+        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
