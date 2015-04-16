@@ -9,6 +9,13 @@
 import SpriteKit
 import CoreMotion
 
+struct PhysicsCategory {
+    static let None      : UInt32 = 0
+    static let All       : UInt32 = UInt32.max
+    static let Monster   : UInt32 = 0b1       // 1
+    static let Projectile: UInt32 = 0b10      // 2
+}
+
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
@@ -18,12 +25,16 @@ let MaxBallSpeed: CGFloat = 200
 //percentage of energy ball retains after hitting wall .1 => 10% of energy retained
 let BorderCollisionDamping: CGFloat = 0.7
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate  {
     
-    let ball = SKSpriteNode(imageNamed: BallCategoryName)
+    var ball = SKSpriteNode(imageNamed: BallCategoryName)
+ 
+    //let ball = gameball
+    /*
     let wall1 = SKSpriteNode(imageNamed: BlockCategoryName)
     let wall2 = SKSpriteNode(imageNamed: BlockCategoryName)
     let wall3 = SKSpriteNode(imageNamed: BlockCategoryName)
+*/
     var ballAcceleration = CGVector(dx: 0, dy: 0)
     var ballVelocity = CGVector(dx: 0, dy: 0)
     var lastUpdateTime: CFTimeInterval = 0
@@ -41,12 +52,23 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
 
         //only happens once
+       
+        // 1. Create a physics body that borders the screen
+        physicsWorld.gravity = CGVectorMake(0, 0)
+        // physicsWorld.contactDelegate = self
         
-        wall1.size=CGSize(width: 250, height: 100)
-        wall1.position =  CGPoint(x: 125, y: 400)
-        wall2.position =  CGPoint(x: size.width - 50, y: 60)
-        wall3.position =  CGPoint(x: size.width - 50, y: 60)
-        addChild(wall1)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
+        ball.physicsBody?.dynamic = true
+       // ball.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
+       // ball.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+       // ball.physicsBody?.collisionBitMask = PhysicsCategory.None
+       // ball.physicsBody?.usesPreciseCollisionDetection = true
+        
+        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        // 2. Set the friction of that physicsBody to 0
+        borderBody.friction = 0
+        // 3. Set physicsBody of scene to borderBody
+        self.physicsBody = borderBody
         ball.position = CGPoint(x: size.width - 50, y: 60)
         addChild(ball)
         
@@ -113,66 +135,12 @@ class GameScene: SKScene {
         var collidedWithVerticalBorder = false
         var collidedWithHorizontalBorder = false
         
+      
         
-        if ballVelocity.dx < 0 && newX < (wall1.position.x + wall1.size.width/2) && newY < wall1.position.y + wall1.size.height/2 && newY > wall1.position.y - wall1.size.height/2 && newX > (wall1.position.x - wall1.size.width/2)
-        {
-           newX=wall1.position.x + wall1.size.width/2
-            collidedWithVerticalBorder = true
-            
-        }
-            
-        else if ballVelocity.dx > 0 && newX < (wall1.position.x + wall1.size.width/2) && newY < wall1.position.y + wall1.size.height/2 && newY > wall1.position.y - wall1.size.height/2 && newX > (wall1.position.x - wall1.size.width/2)
-        {
-            newX=wall1.position.x - wall1.size.width/2
-            collidedWithVerticalBorder = true
-            
-        }
-
-        if ballVelocity.dy < 0 && newY < (wall1.position.y + wall1.size.height/2) && newX < wall1.position.x + wall1.size.width/2 && newX > wall1.position.x - wall1.size.width/2 && newY > (wall1.position.y - wall1.size.height/2)
-        {
-            newY=wall1.position.y - wall1.size.height/2
-            collidedWithHorizontalBorder = true
-            
-        }
-            
-        else if ballVelocity.dy > 0 && newY < (wall1.position.y + wall1.size.height/2) && newX < wall1.position.x + wall1.size.width/2 && newX > wall1.position.x - wall1.size.width/2 && newY > (wall1.position.y - wall1.size.height/2)
-        {
-            newY=wall1.position.y + wall1.size.height/2
-            collidedWithHorizontalBorder = true
-            
-        }
-
-        
-        if newX < 0 {
-            newX = 0
-            collidedWithVerticalBorder = true
-        } else if newX > size.width {
-            newX = size.width
-            collidedWithVerticalBorder = true
-        }
-        
-        if newY < 0 {
-            newY = 0
-            collidedWithHorizontalBorder = true
-        } else if newY > size.height {
-            newY = size.height
-            collidedWithHorizontalBorder = true
-        }
-        
-        if collidedWithVerticalBorder {
-            ballAcceleration.dx = -ballAcceleration.dx * BorderCollisionDamping
-            ballVelocity.dx = -ballVelocity.dx * BorderCollisionDamping
-            ballAcceleration.dy = ballAcceleration.dy * BorderCollisionDamping
-            ballVelocity.dy = ballVelocity.dy * BorderCollisionDamping
-        }
-        
-        if collidedWithHorizontalBorder {
-            ballAcceleration.dx = ballAcceleration.dx * BorderCollisionDamping
-            ballVelocity.dx = ballVelocity.dx * BorderCollisionDamping
-            ballAcceleration.dy = -ballAcceleration.dy * BorderCollisionDamping
-            ballVelocity.dy = -ballVelocity.dy * BorderCollisionDamping
-        }
-        
+        // 4
+        newX = min(size.width, max(0, newX))
+        newY = min(size.height, max(0, newY))
+ 
         
         ball.position = CGPoint(x: newX, y: newY)
         
