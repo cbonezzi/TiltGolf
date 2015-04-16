@@ -9,6 +9,7 @@
 import SpriteKit
 import CoreMotion
 
+//for bit masking, not used but could be
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -22,19 +23,14 @@ let BlockCategoryName = "block"
 let BlockNodeCategoryName = "blockNode"
 let MaxBallAcceleration: CGFloat = 400
 let MaxBallSpeed: CGFloat = 200
-//percentage of energy ball retains after hitting wall .1 => 10% of energy retained
+//percentage of energy ball retains after hitting wall .1 => 10% of energy retained -no longer used
 let BorderCollisionDamping: CGFloat = 0.7
 
+//added SKPhysicis COntact Delegate if hopes of using for colusion
 class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     var ball = SKSpriteNode(imageNamed: BallCategoryName)
  
-    //let ball = gameball
-    /*
-    let wall1 = SKSpriteNode(imageNamed: BlockCategoryName)
-    let wall2 = SKSpriteNode(imageNamed: BlockCategoryName)
-    let wall3 = SKSpriteNode(imageNamed: BlockCategoryName)
-*/
     var ballAcceleration = CGVector(dx: 0, dy: 0)
     var ballVelocity = CGVector(dx: 0, dy: 0)
     var lastUpdateTime: CFTimeInterval = 0
@@ -53,22 +49,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
 
         //only happens once
        
-        // 1. Create a physics body that borders the screen
+        // this is gravity for the world(has to be off or the ball falls to the bottom of the screen)
         physicsWorld.gravity = CGVectorMake(0, 0)
         // physicsWorld.contactDelegate = self
         
+        //adds a physics body around the ball
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
+        //Sets the sprite to be dynamic. This means that the physics engine will not control the movement of the monster – you will through the code you’ve already written (using move actions).
         ball.physicsBody?.dynamic = true
-       // ball.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
-       // ball.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
-       // ball.physicsBody?.collisionBitMask = PhysicsCategory.None
+        //Sets the category bit mask to be the monsterCategory you defined earlier.
+        //ball.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
+        //The contactTestBitMask indicates what categories of objects this object should notify the contact listener when they intersect. You choose projectiles here.
+        //ball.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+        //The collisionBitMask indicates what categories of objects this object that the physics engine handle contact responses to (i.e. bounce off of). You don’t want the monster and projectile to bounce off each other – it’s OK for them to go right through each other in this game – so you set this to 0.
+         //ball.physicsBody?.collisionBitMask = PhysicsCategory.All
        // ball.physicsBody?.usesPreciseCollisionDetection = true
         
+        //sets border body the size of the frame used to make sure ball doesnt go off edge 
         let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         // 2. Set the friction of that physicsBody to 0
         borderBody.friction = 0
         // 3. Set physicsBody of scene to borderBody
-        self.physicsBody = borderBody
+         self.physicsBody = borderBody
         ball.position = CGPoint(x: size.width - 50, y: 60)
         addChild(ball)
         
@@ -136,7 +138,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         var collidedWithHorizontalBorder = false
         
       
-        
         // 4
         newX = min(size.width, max(0, newX))
         newY = min(size.height, max(0, newY))
