@@ -17,12 +17,16 @@ class UserViews: UIViewController {
     }
     
     @IBAction func instructionsPressed() {
-        self.performSegueWithIdentifier("selectlevel_segue", sender: self)
+        self.performSegueWithIdentifier("instructions_segue", sender: self)
         
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "selectlevel_segue") {
             var childVC : SelectLevelViewController = segue.destinationViewController as SelectLevelViewController
+        }
+        else if (segue.identifier == "instructions_segue") {
+            var childVC : InstrunctionsViewController = segue.destinationViewController as InstrunctionsViewController
+            
         }
     }
     
