@@ -657,7 +657,7 @@
             </objects>
             <point key="canvasLocation" x="382.5" y="-562.5"/>
         </scene>
-        <!--Instrunctions View Controller-->
+        <!--Title-->
         <scene sceneID="JnG-1K-Wht">
             <objects>
                 <viewController id="1O6-ep-O07" customClass="InstrunctionsViewController" customModule="TiltGolf" customModuleProvider="target" sceneMemberID="viewController">
@@ -678,19 +678,33 @@
                                     <rect key="frame" x="156" y="208" width="147" height="92"/>
                                 </variation>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIG-sJ-2Po">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Instruncitons " id="UUd-Kf-bvb">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="ArQ-r8-bzo"/>
+                                    </navigationItem>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="39" width="400" height="44"/>
+                                </variation>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="dfB-Wk-ORb"/>
+                                <exclude reference="IIG-sJ-2Po"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="dfB-Wk-ORb"/>
+                                <include reference="IIG-sJ-2Po"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="El7-FS-AJb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZjS-VB-TRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
