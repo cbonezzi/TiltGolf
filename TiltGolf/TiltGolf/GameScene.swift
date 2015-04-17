@@ -76,14 +76,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.linearDamping = 0.0
         //Sets the category bit mask to be the monsterCategory you defined earlier.
-         self.physicsBody?.categoryBitMask = PhysicsCategory.EdgeBit
+         //self.physicsBody?.categoryBitMask = PhysicsCategory.EdgeBit
         
         //The contactTestBitMask indicates what categories of objects this object should notify the contact listener when they intersect. You choose projectiles here.
        // self.physicsBody?.contactTestBitMask = PhysicsCategory.BallBit
         
       //  self.physicsBody?.collisionBitMask = PhysicsCategory.BallBit | PhysicsCategory.EdgeBit
         //The collisionBitMask indicates what categories of objects this object that the physics engine handle contact responses to (i.e. bounce off of). You don’t want the monster and projectile to bounce off each other – it’s OK for them to go right through each other in this game – so you set this to 0.
-         ball.physicsBody?.collisionBitMask =  PhysicsCategory.EdgeBit
+        ball.physicsBody?.allowsRotation = false
+        ball.physicsBody?.restitution = 1.0
+
+        // ball.physicsBody?.collisionBitMask =  PhysicsCategory.EdgeBit
         
        // ball.physicsBody?.usesPreciseCollisionDetection = true
           ball.physicsBody?.affectedByGravity = false
