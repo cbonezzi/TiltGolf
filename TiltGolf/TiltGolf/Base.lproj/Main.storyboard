@@ -669,38 +669,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfB-Wk-ORb">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIG-sJ-2Po">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Instruncitons" id="UUd-Kf-bvb">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ArQ-r8-bzo">
+                                            <connections>
+                                                <segue destination="dIv-R8-0rF" kind="show" id="iFV-WJ-XhM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="44"/>
+                                </variation>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label this is going to  expalin the app so far tho it doesnt say too much.. just get the ball to the hole " lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfB-Wk-ORb">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="156" y="208" width="147" height="92"/>
+                                    <rect key="frame" x="86" y="111" width="164" height="171"/>
                                 </variation>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IIG-sJ-2Po">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Instruncitons " id="UUd-Kf-bvb">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="ArQ-r8-bzo"/>
-                                    </navigationItem>
-                                </items>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="39" width="400" height="44"/>
-                                </variation>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="dfB-Wk-ORb"/>
                                 <exclude reference="IIG-sJ-2Po"/>
+                                <exclude reference="dfB-Wk-ORb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="dfB-Wk-ORb"/>
                                 <include reference="IIG-sJ-2Po"/>
+                                <include reference="dfB-Wk-ORb"/>
                             </mask>
                         </variation>
                     </view>
@@ -708,7 +712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZjS-VB-TRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="399" y="48.75"/>
+            <point key="canvasLocation" x="471" y="146.25"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="CtS-rA-C9T">
