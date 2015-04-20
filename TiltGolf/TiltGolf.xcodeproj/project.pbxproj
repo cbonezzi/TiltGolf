@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9D3A188A1AE0AE3A00D91576 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */; };
+		9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */; };
+		9DD00F1C1AE48879009532A4 /* 120_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */; };
 		DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */; };
 		DB189C6F1ACCDFF3001F2F94 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB189C6E1ACCDFF3001F2F94 /* GameScene.sks */; };
 		DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C701ACCDFF3001F2F94 /* GameScene.swift */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1429509565_kolf_converted.png; sourceTree = "<group>"; };
+		9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120_kolf_converted.png; sourceTree = "<group>"; };
 		DB189C671ACCDFF3001F2F94 /* TiltGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiltGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB189C6B1ACCDFF3001F2F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		DB189C6A1ACCDFF3001F2F94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */,
+				9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */,
 				DB189C6B1ACCDFF3001F2F94 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -211,6 +217,8 @@
 				DB189C7B1ACCDFF3001F2F94 /* LaunchScreen.xib in Resources */,
 				DB189C781ACCDFF3001F2F94 /* Images.xcassets in Resources */,
 				DB189C6F1ACCDFF3001F2F94 /* GameScene.sks in Resources */,
+				9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */,
+				9DD00F1C1AE48879009532A4 /* 120_kolf_converted.png in Resources */,
 				DB189C761ACCDFF3001F2F94 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
