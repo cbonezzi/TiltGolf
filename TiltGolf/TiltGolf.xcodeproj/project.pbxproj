@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9D3A188A1AE0AE3A00D91576 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */; };
+		9DC4C11C1AE5D33F00CB79D7 /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */; };
+		9DC4C11E1AE5D37700CB79D7 /* LoseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */; };
 		9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */; };
 		9DD00F1C1AE48879009532A4 /* 120_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */; };
 		DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
+		9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseViewController.swift; sourceTree = "<group>"; };
 		9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1429509565_kolf_converted.png; sourceTree = "<group>"; };
 		9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120_kolf_converted.png; sourceTree = "<group>"; };
 		DB189C671ACCDFF3001F2F94 /* TiltGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiltGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +106,8 @@
 				DB189C791ACCDFF3001F2F94 /* LaunchScreen.xib */,
 				DB189C6A1ACCDFF3001F2F94 /* Supporting Files */,
 				9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */,
+				9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */,
+				9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */,
 			);
 			path = TiltGolf;
 			sourceTree = "<group>";
@@ -241,6 +247,8 @@
 				DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */,
 				DB189C731ACCDFF3001F2F94 /* GameViewController.swift in Sources */,
 				DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */,
+				9DC4C11C1AE5D33F00CB79D7 /* WinViewController.swift in Sources */,
+				9DC4C11E1AE5D37700CB79D7 /* LoseViewController.swift in Sources */,
 				DBB40C111AD4DE3600497157 /* SelectLevelViewController.swift in Sources */,
 				DBB40C0F1AD4CBBC00497157 /* UserViews.swift in Sources */,
 			);

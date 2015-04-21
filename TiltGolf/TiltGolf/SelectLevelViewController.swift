@@ -12,6 +12,8 @@ import SpriteKit
 
 class SelectLevelViewController: UIViewController {
     
+    @IBOutlet var levelButtons: [UIButton]!
+    
     @IBAction func startgamePressed(sender: UIButton) {
         self.performSegueWithIdentifier("startgame_segue", sender: self)
     }
@@ -22,8 +24,22 @@ class SelectLevelViewController: UIViewController {
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var levels = 3
+        for var i = 0; i < levels; i++ {
+            
+            println(levelButtons.count  + i)
+            let newImage = UIImage(named:"small_unlock_image")
+
+            let button = levelButtons[i]
+            button.setBackgroundImage(newImage, forState: UIControlState.Normal)
+
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
