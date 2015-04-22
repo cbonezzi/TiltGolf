@@ -270,8 +270,7 @@
                                         <exclude reference="v9h-Qy-OH3"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="281" y="371" width="35" height="38"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="L4x-UF-3Xf"/>
                                         <include reference="SpT-KB-AKU"/>
@@ -335,8 +334,7 @@
                                         <exclude reference="n7D-pN-md1"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="282" y="478" width="35" height="38"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="5E0-P8-q2K"/>
                                         <include reference="Xwe-FN-sMh"/>
@@ -453,8 +451,7 @@
                                         <exclude reference="zUJ-P7-6jS"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="282" y="255" width="35" height="38"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="KmA-T5-F6q"/>
                                         <include reference="L8s-Mk-VGc"/>
