@@ -29,7 +29,7 @@ class SelectLevelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var levels = 3
+        var levels = 1
         for var i = 0; i < levels; i++ {
             
             println(levelButtons.count  + i)

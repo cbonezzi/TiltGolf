@@ -8,6 +8,8 @@
 
 import UIKit
 import SpriteKit
+import Foundation
+
 
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
@@ -28,7 +30,7 @@ extension SKNode {
 class GameViewController: UIViewController {
     
     @IBOutlet var countingLabel: UILabel!
-    var counter = 0.0
+    var counter = 45.0
     var timer = NSTimer()
     override func viewDidLoad() {
         
@@ -73,9 +75,23 @@ class GameViewController: UIViewController {
        
     }
     func updateCounter() {
-        counter = counter + 0.01
+        counter = counter - 0.01
         countingLabel.text = String(format:"%.2f", counter)
+        if (counter < 0.01) {
+            timer.invalidate()
+
+            self.performSegueWithIdentifier("LoseController", sender: self)
+            
+            
+        }
     }
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "LoseController") {
+            var childVC : LoseViewController = segue.destinationViewController as LoseViewController
+        }
+    }
+*/
 
     override func shouldAutorotate() -> Bool {
         return true
