@@ -26,10 +26,34 @@ extension SKNode {
 }
 
 class GameViewController: UIViewController {
-
+    
+    @IBOutlet var countingLabel: UILabel!
+    var counter = 0.0
+    var timer = NSTimer()
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
+        /*
 
+        let alertController = UIAlertController(title: "High Scores: " , message : "high score is: 00:00",  preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true) {
+        }
+        */
+        countingLabel.text = String(format:"%.2f", counter)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+
+        super.viewDidLoad()
+ 
+        
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             // Configure the view.
             let skView = self.view as SKView
@@ -43,7 +67,14 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+   
         }
+        
+       
+    }
+    func updateCounter() {
+        counter = counter + 0.01
+        countingLabel.text = String(format:"%.2f", counter)
     }
 
     override func shouldAutorotate() -> Bool {

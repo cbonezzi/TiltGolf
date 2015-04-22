@@ -8,6 +8,7 @@
 
 import SpriteKit
 import CoreMotion
+import UIKit
 
 //for bit masking, not used but could be
 struct PhysicsCategory {
@@ -47,9 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
    
     override func didMoveToView(view: SKView) {
 
-        //only happens once
-       
-        // this is gravity for the world(has to be off or the ball falls to the bottom of the screen)
+                // this is gravity for the world(has to be off or the ball falls to the bottom of the screen)
        // physicsWorld.gravity = CGVectorMake(0, 0)
         // physicsWorld.contactDelegate = self
         //adds a physics body around the ball
@@ -164,6 +163,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
     }
     
+
+    
     //if touch screen
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
     }
@@ -177,5 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         updateBallAccelerationFromMotionManager()
         updateBallMovement(deltaTime)
+        
+        
     }
 }
