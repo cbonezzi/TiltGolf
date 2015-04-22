@@ -163,9 +163,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         if (ball.position.x > 100 && ball.position.y > 100) {
             if let mainView = view {
-                let gameOverScene = GameOverScene.unarchiveFromFile("GameOverScene") as GameOverScene!
-                gameOverScene.gameWon = true
-                mainView.presentScene(gameOverScene)
+                //let gameOverScene = GameOverScene.unarchiveFromFile("GameOverScene") as GameOverScene!
+               // gameOverScene.gameWon = true
+              //  mainView.presentScene(gameOverScene)
             }
         }
         
