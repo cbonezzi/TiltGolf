@@ -12,6 +12,7 @@ import SpriteKit
 
 class SelectLevelViewController: UIViewController {
     
+    var usernameArray: String = String()
     @IBOutlet var levelButtons: [UIButton]!
     
     @IBAction func startgamePressed(sender: UIButton) {
@@ -24,12 +25,15 @@ class SelectLevelViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var levels = 3
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let UsersFromNSUD = defaults.stringForKey("score"){// integerForKey("1") {// stringArrayForKey("usernameArray") {
+            usernameArray = UsersFromNSUD
+        }
+        var levels = 0
+        levels += usernameArray.toInt()!
         for var i = 0; i < levels; i++ {
             
             println(levelButtons.count  + i)

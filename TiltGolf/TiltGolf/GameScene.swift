@@ -8,6 +8,7 @@
 
 import SpriteKit
 import CoreMotion
+import UIKit
 
 //for bit masking, not used but could be
 struct PhysicsCategory {
@@ -28,7 +29,7 @@ let MaxBallSpeed: CGFloat = 200
 //percentage of energy ball retains after hitting wall .1 => 10% of energy retained -no longer used
 let BorderCollisionDamping: CGFloat = 0.7
 //added SKPhysicis Contact Delegate if hopes of using for colusion
-class GameScene: SKScene, SKPhysicsContactDelegate  {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // this are flags used for detecting and signaling motion on the update of ball movement
     var lefttrigger = false
@@ -62,10 +63,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         //adds a physics body around the ball
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
         //Sets the sprite to be dynamic. This means that the physics engine will not control the movement of the monster – you will through the code you’ve already written (using move actions).
-        ball.physicsBody?.dynamic = true
+        //ball.physicsBody?.dynamic = true
         
         //Sets the category bit mask to be the monsterCategory you defined earlier.
-        ball.physicsBody?.categoryBitMask = PhysicsCategory.BallBitMask
+        //ball.physicsBody?.categoryBitMask = PhysicsCategory.BallBitMask
         
         //The contactTestBitMask indicates what categories of objects this object should notify the contact listener when they intersect. You choose projectiles here.
         // ball.physicsBody?.contactTestBitMask = PhysicsCategory.EdgeBit
@@ -101,9 +102,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         ball.physicsBody?.affectedByGravity = false
         ball.position = CGPoint(x: size.width - 50, y: 60)
         addChild(ball)
-        
+        ball.physicsBody!.applyImpulse(CGVectorMake(10, -5))
         //bottom.physicsBody!.categoryBitMask = BottomCategory
-        ball.physicsBody!.categoryBitMask = PhysicsCategory.BallBitMask // BallCategory
+        //ball.physicsBody!.categoryBitMask = PhysicsCategory.BallBitMask // BallCategory
         //paddle.physicsBody!.categoryBitMask = PaddleCategory
         
         ball.physicsBody!.contactTestBitMask = PhysicsCategory.BlockBitMask
@@ -136,7 +137,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         //        self.physicsBody = borderBody
     }
     func startMonitoringAcceleration() {
-        
         if motionManager.accelerometerAvailable {
             motionManager.startAccelerometerUpdates()
             NSLog("accelerometer updates on...")
@@ -144,7 +144,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     }
     
     func stopMonitoringAcceleration() {
-        
         if motionManager.accelerometerAvailable && motionManager.accelerometerActive {
             motionManager.stopAccelerometerUpdates()
             NSLog("accelerometer updates off...")
@@ -157,27 +156,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             
             let FilterFactor = 0.75
             
+            accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor)
+            accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor)
+            
+            ballAcceleration.dy = CGFloat(accelerometerY) * MaxBallAcceleration
+            ballAcceleration.dx = CGFloat(accelerometerX) * MaxBallAcceleration
+            
             // here we are using the values set for contact on objects in the scene
-            if !uptrigger || !downtrigger || !righttrigger || !lefttrigger{
-                accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor)
-                accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor)
-            
-                ballAcceleration.dy = CGFloat(accelerometerY) * MaxBallAcceleration
-                ballAcceleration.dx = CGFloat(accelerometerX) * MaxBallAcceleration
-            }
-            
-            if uptrigger || downtrigger || righttrigger || lefttrigger {
-                accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor) + 10
-                accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor) + 10
-                
-                ballAcceleration.dy = CGFloat(accelerometerY) * MaxBallAcceleration + 10
-                ballAcceleration.dx = CGFloat(accelerometerX) * MaxBallAcceleration + 10
-                uptrigger = false
-                downtrigger = false
-                righttrigger = false
-                lefttrigger = false
-
-            }
+//            if !uptrigger || !downtrigger || !righttrigger || !lefttrigger{
+//                accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor)
+//                accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor)
+//            
+//                ballAcceleration.dy = CGFloat(accelerometerY) * MaxBallAcceleration
+//                ballAcceleration.dx = CGFloat(accelerometerX) * MaxBallAcceleration
+//            }
+//            
+//            // look at how the breakout game handles the bouncing off of the blocks
+//            if uptrigger || downtrigger || righttrigger || lefttrigger {
+//                accelerometerX = acceleration.x * FilterFactor + accelerometerX * (1 - FilterFactor) + 10
+//                accelerometerY = acceleration.y * FilterFactor + accelerometerY * (1 - FilterFactor) + 10
+//                
+//                ballAcceleration.dy = CGFloat(accelerometerY) * MaxBallAcceleration + 10
+//                ballAcceleration.dx = CGFloat(accelerometerX) * MaxBallAcceleration + 10
+//                uptrigger = false
+//                downtrigger = false
+//                righttrigger = false
+//                lefttrigger = false
+//
+//            }
             
             println("X Val accel")
             println(accelerometerX)
@@ -226,32 +232,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         let acceleration = motionManager.accelerometerData?.acceleration
         let percentAccX = accelerometerX * 100
         let percentAccY = accelerometerY * 100
-        if contact.bodyA.categoryBitMask < contact.bodyB.collisionBitMask{
-            println("Iam in A")
-            if percentAccY < 0 {
-                downtrigger = true
-                //ball.physicsBody!.applyImpulse(CGVectorMake(0, -5))
-                firstBody = contact.bodyA
-                secondBody = contact.bodyB
-            } else {
-                uptrigger = true
-                //ball.physicsBody!.applyImpulse(CGVectorMake(0, 5))
-                firstBody = contact.bodyA
-                secondBody = contact.bodyB
-            }
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
         } else {
-            println("Iam in B")
-            if percentAccX < 0 {
-                lefttrigger = true
-                //ball.physicsBody!.applyImpulse(CGVectorMake(-5, 0))
-                firstBody = contact.bodyB
-                secondBody = contact.bodyA
-            } else {
-                righttrigger = true
-                //ball.physicsBody!.applyImpulse(CGVectorMake(5, 0))
-                firstBody = contact.bodyB
-                secondBody = contact.bodyA
-            }
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
         }
     }
     

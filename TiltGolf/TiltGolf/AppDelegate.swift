@@ -12,10 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var usernameArray: String = String()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let userscore = 1
+        
+        usernameArray = toString(userscore)
+        //usernameMostRecentScores.append(recentScore)
+        //usernameHighestScore.append(higherScore)
+        //usernameRegDate.append(date)
+        
+        defaults.setObject(usernameArray, forKey: "score")
         return true
     }
 

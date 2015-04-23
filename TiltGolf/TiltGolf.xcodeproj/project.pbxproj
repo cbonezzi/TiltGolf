@@ -20,6 +20,8 @@
 		DB189C781ACCDFF3001F2F94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB189C771ACCDFF3001F2F94 /* Images.xcassets */; };
 		DB189C7B1ACCDFF3001F2F94 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB189C791ACCDFF3001F2F94 /* LaunchScreen.xib */; };
 		DB189C871ACCDFF3001F2F94 /* TiltGolfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C861ACCDFF3001F2F94 /* TiltGolfTests.swift */; };
+		DB9EE0281AE8A0290062D4EE /* WinControllerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9EE0271AE8A0290062D4EE /* WinControllerScene.swift */; };
+		DB9EE02A1AE8A03D0062D4EE /* LoseControllerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9EE0291AE8A03D0062D4EE /* LoseControllerScene.swift */; };
 		DBB40C0F1AD4CBBC00497157 /* UserViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB40C0E1AD4CBBC00497157 /* UserViews.swift */; };
 		DBB40C111AD4DE3600497157 /* SelectLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB40C101AD4DE3600497157 /* SelectLevelViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		DB189C801ACCDFF3001F2F94 /* TiltGolfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TiltGolfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB189C851ACCDFF3001F2F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB189C861ACCDFF3001F2F94 /* TiltGolfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltGolfTests.swift; sourceTree = "<group>"; };
+		DB9EE0271AE8A0290062D4EE /* WinControllerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinControllerScene.swift; sourceTree = "<group>"; };
+		DB9EE0291AE8A03D0062D4EE /* LoseControllerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseControllerScene.swift; sourceTree = "<group>"; };
 		DBB40C0E1AD4CBBC00497157 /* UserViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViews.swift; sourceTree = "<group>"; };
 		DBB40C101AD4DE3600497157 /* SelectLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLevelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +112,8 @@
 				9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */,
 				9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */,
 				9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */,
+				DB9EE0271AE8A0290062D4EE /* WinControllerScene.swift */,
+				DB9EE0291AE8A03D0062D4EE /* LoseControllerScene.swift */,
 			);
 			path = TiltGolf;
 			sourceTree = "<group>";
@@ -188,7 +194,7 @@
 				TargetAttributes = {
 					DB189C661ACCDFF3001F2F94 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 625732G463;
+						DevelopmentTeam = PPJS5QNJ9P;
 					};
 					DB189C7F1ACCDFF3001F2F94 = {
 						CreatedOnToolsVersion = 6.2;
@@ -246,6 +252,8 @@
 				9D3A188A1AE0AE3A00D91576 /* InstructionsViewController.swift in Sources */,
 				DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */,
 				DB189C731ACCDFF3001F2F94 /* GameViewController.swift in Sources */,
+				DB9EE02A1AE8A03D0062D4EE /* LoseControllerScene.swift in Sources */,
+				DB9EE0281AE8A0290062D4EE /* WinControllerScene.swift in Sources */,
 				DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */,
 				9DC4C11C1AE5D33F00CB79D7 /* WinViewController.swift in Sources */,
 				9DC4C11E1AE5D37700CB79D7 /* LoseViewController.swift in Sources */,
@@ -379,7 +387,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cce809d3-c356-4950-853e-349f9113be1d";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -393,7 +401,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cce809d3-c356-4950-853e-349f9113be1d";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
