@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9D3A188A1AE0AE3A00D91576 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */; };
+		9DB0BABD1AE84D660040214F /* adc-51jfsfo106_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB0BABC1AE84D660040214F /* adc-51jfsfo106_8.jpg */; };
+		9DB0BABF1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB0BABE1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png */; };
+		9DB0BAC11AE856F50040214F /* niXn6jAiB.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9DB0BAC01AE856F50040214F /* niXn6jAiB.gif */; };
 		9DC4C11C1AE5D33F00CB79D7 /* WinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */; };
 		9DC4C11E1AE5D37700CB79D7 /* LoseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */; };
 		9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */; };
@@ -38,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		9DB0BABC1AE84D660040214F /* adc-51jfsfo106_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "adc-51jfsfo106_8.jpg"; sourceTree = "<group>"; };
+		9DB0BABE1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1429759078_Minion-playing-golf-icon.png"; sourceTree = "<group>"; };
+		9DB0BAC01AE856F50040214F /* niXn6jAiB.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = niXn6jAiB.gif; sourceTree = "<group>"; };
 		9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinViewController.swift; sourceTree = "<group>"; };
 		9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseViewController.swift; sourceTree = "<group>"; };
 		9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1429509565_kolf_converted.png; sourceTree = "<group>"; };
@@ -121,6 +127,9 @@
 		DB189C6A1ACCDFF3001F2F94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9DB0BAC01AE856F50040214F /* niXn6jAiB.gif */,
+				9DB0BABE1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png */,
+				9DB0BABC1AE84D660040214F /* adc-51jfsfo106_8.jpg */,
 				9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */,
 				9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */,
 				DB189C6B1ACCDFF3001F2F94 /* Info.plist */,
@@ -226,8 +235,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DB0BABD1AE84D660040214F /* adc-51jfsfo106_8.jpg in Resources */,
 				DB189C7B1ACCDFF3001F2F94 /* LaunchScreen.xib in Resources */,
 				DB189C781ACCDFF3001F2F94 /* Images.xcassets in Resources */,
+				9DB0BABF1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png in Resources */,
+				9DB0BAC11AE856F50040214F /* niXn6jAiB.gif in Resources */,
 				DB189C6F1ACCDFF3001F2F94 /* GameScene.sks in Resources */,
 				9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */,
 				9DD00F1C1AE48879009532A4 /* 120_kolf_converted.png in Resources */,

@@ -20,6 +20,7 @@ struct PhysicsCategory {
     static let BallBitMask   : UInt32 = 0x1 << 1
 }
 
+let thisGameViewController = GameViewController()
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
@@ -241,6 +242,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+  
+
+    
     //if touch screen
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
     }
@@ -254,5 +258,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         updateBallAccelerationFromMotionManager()
         updateBallMovement(deltaTime)
+        
+        
     }
 }
