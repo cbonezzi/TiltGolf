@@ -72,8 +72,20 @@ class GameViewController: UIViewController {
    
         }
         
+    
+
        
     }
+    
+    
+     func winScreen(){
+        
+        self.performSegueWithIdentifier("LoseController", sender: self)
+        
+        
+    }
+    
+    
     func updateCounter() {
         counter = counter - 0.01
         countingLabel.text = String(format:"%.2f", counter)
