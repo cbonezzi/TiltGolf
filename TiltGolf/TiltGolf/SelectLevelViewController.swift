@@ -20,7 +20,7 @@ class SelectLevelViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "startgame_segue") {
-            var childVC : GameViewController = segue.destinationViewController as GameViewController
+            var childVC : GameViewController = segue.destinationViewController as! GameViewController
         }
     }
     

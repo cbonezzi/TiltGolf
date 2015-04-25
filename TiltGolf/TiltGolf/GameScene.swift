@@ -18,7 +18,7 @@ struct PhysicsCategory {
     static let BallBit: UInt32 = 0b10      // 2
 }
 
-let thisGameViewController = GameViewController()
+//let thisGameViewController = GameViewController()
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
@@ -163,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         ball.position = CGPoint(x: newX, y: newY)
         
         if (ball.position.x > 495.1 && ball.position.y > 1065.6) {
-            thisGameViewController.winScreen()
+            //thisGameViewController.winScreen()
                 if let mainView = view {
                     
                     let gameOverScene = WinViewController() as UIViewController!
@@ -178,8 +178,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
 
     
     //if touch screen
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-    }
+ //   override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  //  }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered??? */

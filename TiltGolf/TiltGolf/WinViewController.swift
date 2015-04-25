@@ -22,10 +22,10 @@ class WinViewController: UIViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "selectlevel_segue") {
-            var childVC : SelectLevelViewController = segue.destinationViewController as SelectLevelViewController
+            var childVC : SelectLevelViewController = segue.destinationViewController as! SelectLevelViewController
         }
         else if (segue.identifier == "nextlevel_segue") {
-            var childVC : GameViewController = segue.destinationViewController as GameViewController
+            var childVC : GameViewController = segue.destinationViewController as! GameViewController
         }
         
         

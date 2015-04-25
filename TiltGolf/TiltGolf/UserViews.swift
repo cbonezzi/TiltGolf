@@ -22,10 +22,10 @@ class UserViews: UIViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "selectlevel_segue") {
-            var childVC : SelectLevelViewController = segue.destinationViewController as SelectLevelViewController
+            var childVC : SelectLevelViewController = segue.destinationViewController as! SelectLevelViewController
         }
         else if (segue.identifier == "instructions_segue") {
-            var childVC : InstrunctionsViewController = segue.destinationViewController as InstrunctionsViewController
+            var childVC : InstrunctionsViewController = segue.destinationViewController as! InstrunctionsViewController
             
         }
     }
