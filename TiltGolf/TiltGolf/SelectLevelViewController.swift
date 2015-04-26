@@ -15,12 +15,15 @@ class SelectLevelViewController: UIViewController {
     @IBOutlet var levelButtons: [UIButton]!
     
     @IBAction func startgamePressed(sender: UIButton) {
+       CurrentLevel = sender.tag
         self.performSegueWithIdentifier("startgame_segue", sender: self)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "startgame_segue") {
             var childVC : GameViewController = segue.destinationViewController as! GameViewController
+       
         }
     }
     

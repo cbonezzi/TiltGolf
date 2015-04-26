@@ -15,6 +15,8 @@
 		9DC4C11E1AE5D37700CB79D7 /* LoseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */; };
 		9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */; };
 		9DD00F1C1AE48879009532A4 /* 120_kolf_converted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */; };
+		9DD8F0841AED682400EB90AB /* GameSceneLevel2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8F0831AED682400EB90AB /* GameSceneLevel2.sks */; };
+		9DD8F0861AED68B300EB90AB /* GameSceneLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8F0851AED68B300EB90AB /* GameSceneLevel2.swift */; };
 		DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */; };
 		DB189C6F1ACCDFF3001F2F94 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB189C6E1ACCDFF3001F2F94 /* GameScene.sks */; };
 		DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB189C701ACCDFF3001F2F94 /* GameScene.swift */; };
@@ -46,6 +48,8 @@
 		9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoseViewController.swift; sourceTree = "<group>"; };
 		9DD00F191AE487EF009532A4 /* 1429509565_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1429509565_kolf_converted.png; sourceTree = "<group>"; };
 		9DD00F1B1AE48879009532A4 /* 120_kolf_converted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120_kolf_converted.png; sourceTree = "<group>"; };
+		9DD8F0831AED682400EB90AB /* GameSceneLevel2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneLevel2.sks; sourceTree = "<group>"; };
+		9DD8F0851AED68B300EB90AB /* GameSceneLevel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneLevel2.swift; sourceTree = "<group>"; };
 		DB189C671ACCDFF3001F2F94 /* TiltGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiltGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB189C6B1ACCDFF3001F2F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB189C6C1ACCDFF3001F2F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */,
 				9DC4C11B1AE5D33F00CB79D7 /* WinViewController.swift */,
 				9DC4C11D1AE5D37700CB79D7 /* LoseViewController.swift */,
+				9DD8F0831AED682400EB90AB /* GameSceneLevel2.sks */,
+				9DD8F0851AED68B300EB90AB /* GameSceneLevel2.swift */,
 			);
 			path = TiltGolf;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 				DB189C7B1ACCDFF3001F2F94 /* LaunchScreen.xib in Resources */,
 				DB189C781ACCDFF3001F2F94 /* Images.xcassets in Resources */,
 				9DB0BABF1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png in Resources */,
+				9DD8F0841AED682400EB90AB /* GameSceneLevel2.sks in Resources */,
 				9DB0BAC11AE856F50040214F /* niXn6jAiB.gif in Resources */,
 				DB189C6F1ACCDFF3001F2F94 /* GameScene.sks in Resources */,
 				9DD00F1A1AE487EF009532A4 /* 1429509565_kolf_converted.png in Resources */,
@@ -258,6 +265,7 @@
 				9D3A188A1AE0AE3A00D91576 /* InstructionsViewController.swift in Sources */,
 				DB189C711ACCDFF3001F2F94 /* GameScene.swift in Sources */,
 				DB189C731ACCDFF3001F2F94 /* GameViewController.swift in Sources */,
+				9DD8F0861AED68B300EB90AB /* GameSceneLevel2.swift in Sources */,
 				DB189C6D1ACCDFF3001F2F94 /* AppDelegate.swift in Sources */,
 				9DC4C11C1AE5D33F00CB79D7 /* WinViewController.swift in Sources */,
 				9DC4C11E1AE5D37700CB79D7 /* LoseViewController.swift in Sources */,
