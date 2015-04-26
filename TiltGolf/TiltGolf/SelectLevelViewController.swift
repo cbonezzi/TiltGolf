@@ -2,7 +2,7 @@
 //  SelectLevelViewController.swift
 //  TiltGolf
 //
-//  Created by Cesar on 4/7/15.
+//  Created by Gunnar & Cesar on 4/7/15.
 //  Copyright (c) 2015 iOSClass. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class SelectLevelViewController: UIViewController {
     
     @IBAction func startgamePressed(sender: UIButton) {
       //should say if sender.tag <= levelUnlocked
-        if (sender.tag <= 2)
+        if (sender.tag <= 3)
         {
        CurrentLevel = sender.tag
        
@@ -42,7 +42,7 @@ class SelectLevelViewController: UIViewController {
         for var i = 0; i < levelUnlocked; i++ {
             
             let newImage = UIImage(named:"small_unlock_image")
-
+1
             let button = levelButtons[i]
             button.setBackgroundImage(newImage, forState: UIControlState.Normal)
         }

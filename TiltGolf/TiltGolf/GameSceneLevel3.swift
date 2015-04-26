@@ -10,7 +10,7 @@ import SpriteKit
 import CoreMotion
 import UIKit
 
-class GameSceneLevel2: SKScene, SKPhysicsContactDelegate  {
+class GameSceneLevel3: SKScene, SKPhysicsContactDelegate  {
     
     
     var ball = SKSpriteNode(imageNamed: BallCategoryName)

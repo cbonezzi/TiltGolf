@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  TiltGolf
 //
-//  Created by Cesar on 4/1/15.
+//  Created by Gunnar & Cesar on 4/1/15.
 //  Copyright (c) 2015 iOSClass. All rights reserved.
 //
 
@@ -26,12 +26,20 @@ extension SKNode {
                 archiver.finishDecoding()
                 return scene
 
-            } else
+            } else if (CurrentLevel == 2)
             {
                 let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel2
                 archiver.finishDecoding()
                 return scene
             }
+            else
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel3
+                archiver.finishDecoding()
+                return scene
+            }
+            
+
 
    
            
@@ -105,6 +113,26 @@ class GameViewController: UIViewController {
             skView.presentScene(scene)
    
         }
+        }
+        
+            if CurrentLevel == 3 {
+                counter = 25.0
+                
+                if let scene = GameSceneLevel3.unarchiveFromFile("GameSceneLevel3") as? GameSceneLevel3 {
+                    // Configure the view.
+                    let skView = self.view as! SKView
+                    skView.showsFPS = false
+                    skView.showsNodeCount = false
+                    
+                    /* Sprite Kit applies additional optimizations to improve rendering performance */
+                    skView.ignoresSiblingOrder = false
+                    
+                    /* Set the scale mode to scale to fit the window */
+                    scene.scaleMode = .AspectFill
+                    
+                    skView.presentScene(scene)
+                    
+                }
         }
        
     }
