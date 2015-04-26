@@ -15,10 +15,10 @@ class SelectLevelViewController: UIViewController {
     @IBOutlet var levelButtons: [UIButton]!
     
     @IBAction func startgamePressed(sender: UIButton) {
+      //should say if sender.tag <= levelUnlocked
         if (sender.tag <= 2)
         {
        CurrentLevel = sender.tag
-        //remove this after all levels created, used right know to make sure you dont go to a level above 2
        
         
         self.performSegueWithIdentifier("startgame_segue", sender: self)
@@ -38,8 +38,8 @@ class SelectLevelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var levels = 1
-        for var i = 0; i < levels; i++ {
+        var levelUnlocked = 1
+        for var i = 0; i < levelUnlocked; i++ {
             
             let newImage = UIImage(named:"small_unlock_image")
 
