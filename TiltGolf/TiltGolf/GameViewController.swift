@@ -18,7 +18,7 @@ extension SKNode {
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as GameScene
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as SKScene
             archiver.finishDecoding()
             return scene
         } else {
@@ -27,12 +27,17 @@ extension SKNode {
     }
 }
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, dismissalDelegate {
+    
+    func dismissYourChild() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBOutlet var countingLabel: UILabel!
-    var counter = 45.0
+    var counter = 1.0
     var timer = NSTimer()
     override func viewDidLoad() {
+        
         
         /*
 
@@ -71,18 +76,12 @@ class GameViewController: UIViewController {
             skView.presentScene(scene)
    
         }
-        
-    
-
-       
     }
     
     
-     func winScreen(){
-        
-        self.performSegueWithIdentifier("LoseController", sender: self)
-        
-        
+    func winScreen(){
+        //GameScene.UpdateWin()
+        self.performSegueWithIdentifier("WinController", sender: self)
     }
     
     

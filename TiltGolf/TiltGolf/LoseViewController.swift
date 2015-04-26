@@ -12,6 +12,8 @@ import SpriteKit
 
 class LoseViewController: UIViewController {
     
+    var currentLevel : String = String()
+    
     @IBAction func tryAgainPressed() {
         self.performSegueWithIdentifier("startgame_segue", sender: self)
     }
@@ -34,6 +36,16 @@ class LoseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let UsersFromNSUD = defaults.stringForKey("level")
+        currentLevel = UsersFromNSUD!
+        var levels = 0
+        
+        if currentLevel.toInt() < 9 {
+            levels += currentLevel.toInt()! + 1
+            defaults.setObject(toString(levels), forKey: "level")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

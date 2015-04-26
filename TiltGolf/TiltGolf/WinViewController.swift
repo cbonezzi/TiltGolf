@@ -10,31 +10,51 @@ import Foundation
 import UIKit
 import SpriteKit
 
+protocol dismissalDelegate {
+    func dismissYourChild() -> ()
+}
+
+
+
 class WinViewController: UIViewController {
-    var usernameArray: String = String()
+    var delegate: dismissalDelegate?
+    var currentLevel : String = String()
+    
+    @IBAction func nextLevelPressed() {
+        self.performSegueWithIdentifier("nextlevel_segue", sender: self)
+    }
+    
+    @IBAction func SelectLevelPressed() {
+        self.performSegueWithIdentifier("selectlevel_segue", sender: self)
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "selectlevel_segue") {
+            var childVC : SelectLevelViewController = segue.destinationViewController as SelectLevelViewController
+        }
+        else if (segue.identifier == "nextlevel_segue") {
+            var childVC : GameViewController = segue.destinationViewController as GameViewController
+        }
+    }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        StoreUserInit()
+        
+        // logic for unlocking next level
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let UsersFromNSUD = defaults.stringForKey("level")
+        currentLevel = UsersFromNSUD!
+        var levels = 0
+        
+        if currentLevel.toInt() < 9 {
+            levels += currentLevel.toInt()! + 1
+            defaults.setObject(toString(levels), forKey: "level")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
-    }
-    
-    func StoreUserInit(){
-        println("editing ended")
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let userscore = 1
-        
-        usernameArray = toString(userscore)
-        //usernameMostRecentScores.append(recentScore)
-        //usernameHighestScore.append(higherScore)
-        //usernameRegDate.append(date)
-        
-        defaults.setObject(usernameArray, forKey: "score")
-        
     }
 }

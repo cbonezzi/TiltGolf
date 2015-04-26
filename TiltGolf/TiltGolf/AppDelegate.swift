@@ -12,20 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var usernameArray: String = String()
+    var currentLevel: String = String()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        let userscore = 1
+        let level = 1
+        let UsersFromNSUD = defaults.stringForKey("level")
         
-        usernameArray = toString(userscore)
-        //usernameMostRecentScores.append(recentScore)
-        //usernameHighestScore.append(higherScore)
-        //usernameRegDate.append(date)
-        
-        defaults.setObject(usernameArray, forKey: "score")
+        if UsersFromNSUD == nil {
+            
+            currentLevel = toString(level)
+            
+            defaults.setObject(currentLevel, forKey: "level")
+            return true
+        }
         return true
     }
 

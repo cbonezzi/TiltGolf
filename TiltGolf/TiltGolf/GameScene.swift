@@ -20,6 +20,8 @@ struct PhysicsCategory {
     static let BallBitMask   : UInt32 = 0x1 << 1
 }
 
+var ballCross = false
+
 let thisGameViewController = GameViewController()
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
@@ -64,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //adds a physics body around the ball
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
         //Sets the sprite to be dynamic. This means that the physics engine will not control the movement of the monster – you will through the code you’ve already written (using move actions).
-        //ball.physicsBody?.dynamic = true
+        ball.physicsBody?.dynamic = true
         
         //Sets the category bit mask to be the monsterCategory you defined earlier.
         //ball.physicsBody?.categoryBitMask = PhysicsCategory.BallBitMask
@@ -103,10 +105,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.physicsBody?.affectedByGravity = false
         ball.position = CGPoint(x: size.width - 50, y: 60)
         addChild(ball)
-        ball.physicsBody!.applyImpulse(CGVectorMake(10, -5))
-        //bottom.physicsBody!.categoryBitMask = BottomCategory
-        //ball.physicsBody!.categoryBitMask = PhysicsCategory.BallBitMask // BallCategory
-        //paddle.physicsBody!.categoryBitMask = PaddleCategory
         
         ball.physicsBody!.contactTestBitMask = PhysicsCategory.BlockBitMask
         
@@ -151,6 +149,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func UpdateWin() -> Bool {
+        ballCross = true
+        return ballCross
+    }
+    
     func updateBallAccelerationFromMotionManager() {
         
         if let acceleration = motionManager.accelerometerData?.acceleration {
@@ -186,10 +189,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //
 //            }
             
-            println("X Val accel")
-            println(accelerometerX)
-            println("Y Val accel")
-            println(accelerometerY)
+//            println("X Val accel")
+//            println(accelerometerX)
+//            println("Y Val accel")
+//            println(accelerometerY)
             
         }
     }
@@ -218,11 +221,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ball.position = CGPoint(x: newX, y: newY)
         
-        println("X Val move")
-        println(newX)
-        println("Y Val move")
-        println(newY)
-        
+//        println("X Val move")
+//        println(newX)
+//        println("Y Val move")
+//        println(newY)
+//        
+        if (ball.position.x > 495.1 && ball.position.y > 1065.6) {
+            //thisGameViewController.winScreen()
+            
+//                if let mainView = view {
+//                    
+//                    let gameOverScene = LoseControllerScene.unarchiveFromFile("LoseControllerScene") as LoseControllerScene!
+//                    gameOverScene.gameLose = false
+//                    mainView.presentScene(gameOverScene)
+                   // mainView.presentScene(gameOverScene)
+                 //   mainView.bringSubviewToFront(view: gameOverScene)
+                //}
+        }
+     
     }
     
     // this is used to acknowledge a bounce of the wall or of a block
@@ -241,9 +257,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
     }
-    
-  
-
     
     //if touch screen
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

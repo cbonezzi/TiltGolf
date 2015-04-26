@@ -119,7 +119,8 @@
                                         <exclude reference="5wp-12-s8d"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="252" y="136" width="97" height="21"/>
                                     <mask key="constraints">
                                         <include reference="5wp-12-s8d"/>
                                     </mask>
@@ -144,7 +145,8 @@
                                         <exclude reference="Tps-fq-SWg"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="426" y="255" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="Cns-Bf-4BE"/>
                                         <include reference="LlR-4Z-h6g"/>
@@ -175,7 +177,8 @@
                                         <exclude reference="sXd-x9-Rxw"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="427" y="371" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="OUr-NR-cM5"/>
                                         <include reference="PY0-MG-MPu"/>
@@ -206,7 +209,8 @@
                                         <exclude reference="ove-0V-KTH"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="368" y="371" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="3Ka-gb-eZd"/>
                                         <include reference="FZm-Pe-FRs"/>
@@ -237,7 +241,8 @@
                                         <exclude reference="ugC-B3-E9V"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="368" y="478" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="01X-nY-jah"/>
                                         <include reference="gM0-6d-WdT"/>
@@ -270,7 +275,8 @@
                                         <exclude reference="v9h-Qy-OH3"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="488" y="371" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="L4x-UF-3Xf"/>
                                         <include reference="SpT-KB-AKU"/>
@@ -301,7 +307,8 @@
                                         <exclude reference="ljU-KE-mea"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="427" y="478" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="5MN-j3-UPY"/>
                                         <include reference="JPs-vh-hDA"/>
@@ -334,7 +341,8 @@
                                         <exclude reference="n7D-pN-md1"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="489" y="478" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="5E0-P8-q2K"/>
                                         <include reference="Xwe-FN-sMh"/>
@@ -363,7 +371,8 @@
                                         <exclude reference="jju-Au-ymO"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="279" y="204" width="62" height="21"/>
                                     <mask key="constraints">
                                         <include reference="0nJ-4T-3wX"/>
                                         <include reference="OCT-yH-sDt"/>
@@ -388,7 +397,8 @@
                                         <exclude reference="mYL-Db-19j"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="279" y="327" width="62" height="21"/>
                                     <mask key="constraints">
                                         <include reference="38T-tI-vva"/>
                                         <include reference="VhC-x4-lgN"/>
@@ -415,7 +425,8 @@
                                         <exclude reference="nvl-63-d1e"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="279" y="444" width="70" height="21"/>
                                     <mask key="constraints">
                                         <include reference="c0H-05-Vkp"/>
                                         <include reference="fDE-8u-eXd"/>
@@ -451,7 +462,8 @@
                                         <exclude reference="zUJ-P7-6jS"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="489" y="255" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="KmA-T5-F6q"/>
                                         <include reference="L8s-Mk-VGc"/>
@@ -500,7 +512,8 @@
                                         <exclude reference="ybC-Bm-rEJ"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="369" y="255" width="35" height="38"/>
                                     <mask key="constraints">
                                         <include reference="306-3Y-39W"/>
                                         <include reference="a7W-D5-G9e"/>
@@ -760,7 +773,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL WON " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTA-9o-W3d">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -825,7 +838,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7f-gR-hp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2157" y="-104.25"/>
+            <point key="canvasLocation" x="2080.5" y="-543.75"/>
         </scene>
         <!--Lose View Controller-->
         <scene sceneID="SOJ-Vr-RKZ">
@@ -841,7 +854,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL FAILED " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kc5-tO-GGb">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -943,7 +956,9 @@
                         </variation>
                     </view>
                     <connections>
-                        <segue destination="dT9-TJ-sKc" kind="show" id="srk-Mo-QE1"/>
+                        <outlet property="countingLabel" destination="pL4-aF-N1T" id="KGo-c2-JVQ"/>
+                        <segue destination="iMi-ZC-31N" kind="show" identifier="LoseController" id="wSa-Pu-kee"/>
+                        <segue destination="dT9-TJ-sKc" kind="show" identifier="WinController" id="Qnu-Qz-Z6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
@@ -957,8 +972,8 @@
         <image name="small_locked_image" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mc5-hR-uZB"/>
-        <segue reference="8z9-2I-Aav"/>
         <segue reference="yoV-Ft-SdU"/>
+        <segue reference="8z9-2I-Aav"/>
+        <segue reference="mc5-hR-uZB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,7 +12,7 @@ import SpriteKit
 
 class SelectLevelViewController: UIViewController {
     
-    var usernameArray: String = String()
+    var currentLevel: String = String()
     @IBOutlet var levelButtons: [UIButton]!
     
     @IBAction func startgamePressed(sender: UIButton) {
@@ -29,19 +29,23 @@ class SelectLevelViewController: UIViewController {
         super.viewDidLoad()
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let UsersFromNSUD = defaults.stringForKey("score"){// integerForKey("1") {// stringArrayForKey("usernameArray") {
-            usernameArray = UsersFromNSUD
+        if let UsersFromNSUD = defaults.stringForKey("level"){// integerForKey("1") {// stringArrayForKey("usernameArray") {
+            currentLevel = UsersFromNSUD
         }
         var levels = 0
-        levels += usernameArray.toInt()!
-        for var i = 0; i < levels; i++ {
-            
-            println(levelButtons.count  + i)
-            let newImage = UIImage(named:"small_unlock_image")
-
-            let button = levelButtons[i]
-            button.setBackgroundImage(newImage, forState: UIControlState.Normal)
-
+        levels += currentLevel.toInt()!
+        if levels <= levelButtons.count {
+            for var i = 0; i < levels; i++ {
+                
+                println(levelButtons.count  + i)
+                let newImage = UIImage(named:"small_unlock_image")
+                
+                let button = levelButtons[i]
+                button.setBackgroundImage(newImage, forState: UIControlState.Normal)
+            }
+        }
+        else {
+            return
         }
         
     }
