@@ -10,13 +10,16 @@ import Foundation
 import UIKit
 import SpriteKit
 
+var LevelUnlocked = 0
+
 class SelectLevelViewController: UIViewController {
     
     @IBOutlet var levelButtons: [UIButton]!
     
     @IBAction func startgamePressed(sender: UIButton) {
+        
       //should say if sender.tag <= levelUnlocked
-        if (sender.tag <= 3)
+        if (sender.tag <= LevelUnlocked)
         {
        CurrentLevel = sender.tag
        
@@ -38,15 +41,26 @@ class SelectLevelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var levelUnlocked = 1
-        for var i = 0; i < levelUnlocked; i++ {
-            
-            let newImage = UIImage(named:"small_unlock_image")
-1
-            let button = levelButtons[i]
-            button.setBackgroundImage(newImage, forState: UIControlState.Normal)
+        var levelUnlocked : String = String()
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let UsersFromNSUD = defaults.stringForKey("level"){// integerForKey("1") {// stringArrayForKey("usernameArray") {
+            levelUnlocked = UsersFromNSUD
         }
-        
+        var levels = 0
+        levels += levelUnlocked.toInt()!
+        LevelUnlocked = levels
+       // if levels <= levelButtons.count {
+            for var i = 0; i < levels; i++ {
+                
+                let newImage = UIImage(named:"small_unlock_image")
+                
+                let button = levelButtons[i]
+                button.setBackgroundImage(newImage, forState: UIControlState.Normal)
+            }
+        //}
+     
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

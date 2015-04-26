@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let level = 1
+        let UsersFromNSUD = defaults.stringForKey("level")
+        
+        if UsersFromNSUD == nil {
+            
+            var currentLevel: String = toString(level)
+            
+            defaults.setObject(currentLevel, forKey: "level")
+            return true
+        }
+        
         return true
     }
 

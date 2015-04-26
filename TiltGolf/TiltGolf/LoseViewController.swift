@@ -34,6 +34,19 @@ class LoseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // logic for unlocking next level
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        let UsersFromNSUD = defaults.stringForKey("level")
+        var levelUnlocked : String = UsersFromNSUD!
+        var levels = 0
+        
+        if levelUnlocked.toInt() < 9 && CurrentLevel == levelUnlocked.toInt(){
+            levels += levelUnlocked.toInt()! + 1
+            LevelUnlocked = levels
+            defaults.setObject(toString(levels), forKey: "level")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
