@@ -32,7 +32,6 @@ class SelectLevelViewController: UIViewController {
         var levels = 1
         for var i = 0; i < levels; i++ {
             
-            println(levelButtons.count  + i)
             let newImage = UIImage(named:"small_unlock_image")
 
             let button = levelButtons[i]

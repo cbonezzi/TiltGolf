@@ -177,10 +177,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
   
 
     
-    //if touch screen
- //   override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-  //  }
-   
+   // if touch screen
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered??? */
         // to compute velocities we need delta time to multiply by points per second
