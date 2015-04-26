@@ -15,8 +15,14 @@ class SelectLevelViewController: UIViewController {
     @IBOutlet var levelButtons: [UIButton]!
     
     @IBAction func startgamePressed(sender: UIButton) {
+        if (sender.tag <= 2)
+        {
        CurrentLevel = sender.tag
+        //remove this after all levels created, used right know to make sure you dont go to a level above 2
+       
+        
         self.performSegueWithIdentifier("startgame_segue", sender: self)
+        }
         
     }
     
@@ -39,7 +45,6 @@ class SelectLevelViewController: UIViewController {
 
             let button = levelButtons[i]
             button.setBackgroundImage(newImage, forState: UIControlState.Normal)
-
         }
         
     }
