@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import Foundation
 
-
+var CurrentLevel = 1;
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
         if let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks") {
@@ -18,9 +18,23 @@ extension SKNode {
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
-            archiver.finishDecoding()
-            return scene
+            
+            
+            if (CurrentLevel == 1)
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
+                archiver.finishDecoding()
+                return scene
+
+            } else
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel2
+                archiver.finishDecoding()
+                return scene
+            }
+
+   
+           
         } else {
             return nil
         }
@@ -33,7 +47,7 @@ class GameViewController: UIViewController {
     var counter = 45.0
     var timer = NSTimer()
     override func viewDidLoad() {
-        
+       
         /*
 
         let alertController = UIAlertController(title: "High Scores: " , message : "high score is: 00:00",  preferredStyle: .Alert)
@@ -54,9 +68,29 @@ class GameViewController: UIViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
 
         super.viewDidLoad()
- 
-        
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        if CurrentLevel == 1 {
+            counter = 20.0
+            if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+            
+        }
+        if CurrentLevel == 2 {
+            counter = 25.0
+
+        if let scene = GameSceneLevel2.unarchiveFromFile("GameSceneLevel2") as? GameSceneLevel2 {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = false
@@ -71,9 +105,7 @@ class GameViewController: UIViewController {
             skView.presentScene(scene)
    
         }
-        
-    
-
+        }
        
     }
     
