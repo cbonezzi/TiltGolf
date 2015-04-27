@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let defaults = NSUserDefaults.standardUserDefaults()
         let level = 1
-        let UsersFromNSUD = defaults.stringForKey("level")
+        let levelUnlocked = defaults.stringForKey("level")
         
-        if UsersFromNSUD == nil {
+        if levelUnlocked == nil {
             
-            var currentLevel: String = toString(level)
+            var levelLevelString: String = toString(level)
             
-            defaults.setObject(currentLevel, forKey: "level")
+            defaults.setObject(levelLevelString, forKey: "level")
             return true
         }
         

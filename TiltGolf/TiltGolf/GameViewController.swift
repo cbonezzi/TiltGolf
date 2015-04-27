@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 import Foundation
-
+var LevelWon = false
 var CurrentLevel = 1;
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
@@ -76,6 +76,7 @@ class GameViewController: UIViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
 
         super.viewDidLoad()
+        LevelWon = false
         if CurrentLevel == 1 {
             counter = 20.0
             if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
@@ -134,7 +135,6 @@ class GameViewController: UIViewController {
                     
                 }
         }
-       
     }
     
     
@@ -148,7 +148,14 @@ class GameViewController: UIViewController {
     
     func updateCounter() {
         counter = counter - 0.01
+        
         countingLabel.text = String(format:"%.2f", counter)
+        if (LevelWon == true) {
+            timer.invalidate()
+            self.performSegueWithIdentifier("WinController", sender: self)
+
+            
+        }
         if (counter < 0.01) {
             timer.invalidate()
 

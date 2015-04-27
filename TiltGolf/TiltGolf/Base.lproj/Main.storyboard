@@ -796,7 +796,7 @@
                                     <rect key="frame" x="74" y="441" width="192" height="52"/>
                                 </variation>
                                 <connections>
-                                    <action selector="tryAgainPressed" destination="iMi-ZC-31N" eventType="touchUpInside" id="aNP-lR-IUM"/>
+                                    <action selector="nextLevelPressed" destination="dT9-TJ-sKc" eventType="touchUpInside" id="6xt-cO-biF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14N-QY-syI">
@@ -810,7 +810,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="SelectLevelPressed" destination="dT9-TJ-sKc" eventType="touchUpInside" id="cyd-fH-BNS"/>
-                                    <action selector="SelectLevelPressed" destination="iMi-ZC-31N" eventType="touchUpInside" id="kMP-cq-6Cf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -834,11 +833,12 @@
                     </view>
                     <connections>
                         <segue destination="Vuu-XM-Vgl" kind="show" identifier="selectlevel_segue" id="8z9-2I-Aav"/>
+                        <segue destination="LVB-YS-i5n" kind="show" identifier="startgame_segue" id="MKs-j9-8if"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7f-gR-hp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080.5" y="-543.75"/>
+            <point key="canvasLocation" x="2284.5" y="-429.75"/>
         </scene>
         <!--Lose View Controller-->
         <scene sceneID="SOJ-Vr-RKZ">
@@ -972,8 +972,8 @@
         <image name="small_locked_image" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mc5-hR-uZB"/>
         <segue reference="8z9-2I-Aav"/>
+        <segue reference="MKs-j9-8if"/>
         <segue reference="yoV-Ft-SdU"/>
     </inferredMetricsTieBreakers>
 </document>

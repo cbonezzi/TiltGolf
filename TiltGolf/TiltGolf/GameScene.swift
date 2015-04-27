@@ -163,8 +163,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         if (ball.position.x > 495.1 && ball.position.y > 1065.6) {
             //Go to win screen
+           LevelWon = true
             
-        
+            ball.position = CGPoint(x: 10, y: 10)
+            stopMonitoringAcceleration()
         }
      
     }

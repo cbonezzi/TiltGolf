@@ -76,19 +76,9 @@ class GameSceneLevel3: SKScene, SKPhysicsContactDelegate  {
         addChild(ball)
         
         startMonitoringAcceleration()
-        
-        //        //this is only callled once
-        //        /* Setup your scene here */
-        //        //let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        //        //myLabel.text = "Hello, World!";
-        //        //myLabel.fontSize = 65;
-        //        //myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        //
-        //        // bounding ball to the visible frame (phone borders)
-        //        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        //        borderBody.friction = 0
-        //        physicsWorld.gravity = CGVectorMake(0, 0)
-        //        self.physicsBody = borderBody
+        println("ball in start position level 3")
+        println(ball.position.x)
+     println(ball.position.y)
     }
     func startMonitoringAcceleration() {
         
@@ -144,14 +134,11 @@ class GameSceneLevel3: SKScene, SKPhysicsContactDelegate  {
         
         ball.position = CGPoint(x: newX, y: newY)
         
-        if (ball.position.x > 495.1 && ball.position.y > 1065.6) {
-            //thisGameViewController.winScreen()
-            if let mainView = view {
-                
-                let gameOverScene = WinViewController() as UIViewController!
-                // mainView.presentScene(gameOverScene)
-                //   mainView.bringSubviewToFront(view: gameOverScene)
-            }
+        if (ball.position.x < 100 && ball.position.y > 1045.6) {
+            LevelWon = true
+            ball.position = CGPoint(x: 10, y: 10)
+            stopMonitoringAcceleration()
+            
         }
         
     }
