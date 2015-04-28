@@ -446,21 +446,6 @@
                                     <action selector="startgamePressed:" destination="Vuu-XM-Vgl" eventType="touchUpInside" id="9C1-FK-TDN"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWs-HD-ASd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Select Level" id="RNv-pu-7Rf">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="q2t-1x-SwJ">
-                                            <connections>
-                                                <segue destination="dIv-R8-0rF" kind="show" id="yoV-Ft-SdU"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="37" width="400" height="44"/>
-                                </variation>
-                            </navigationBar>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64V-go-1tA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -525,6 +510,21 @@
                                     <action selector="startgamePressed:" destination="Vuu-XM-Vgl" eventType="touchUpInside" id="DUx-tW-UIU"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWs-HD-ASd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Select Level" id="RNv-pu-7Rf">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="q2t-1x-SwJ">
+                                            <connections>
+                                                <segue destination="dIv-R8-0rF" kind="show" id="yoV-Ft-SdU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="78" width="400" height="44"/>
+                                </variation>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -587,9 +587,9 @@
                                 <exclude reference="mo6-je-77g"/>
                                 <exclude reference="qD2-kj-zSc"/>
                                 <exclude reference="a4c-Yc-U0N"/>
-                                <exclude reference="FWs-HD-ASd"/>
                                 <exclude reference="64V-go-1tA"/>
                                 <exclude reference="0YG-ao-lzr"/>
+                                <exclude reference="FWs-HD-ASd"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ysz-TO-Ofy"/>
@@ -642,9 +642,9 @@
                                 <include reference="mo6-je-77g"/>
                                 <include reference="qD2-kj-zSc"/>
                                 <include reference="a4c-Yc-U0N"/>
-                                <include reference="FWs-HD-ASd"/>
                                 <include reference="64V-go-1tA"/>
                                 <include reference="0YG-ao-lzr"/>
+                                <include reference="FWs-HD-ASd"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="ysz-TO-Ofy"/>
@@ -972,8 +972,8 @@
         <image name="small_locked_image" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8z9-2I-Aav"/>
-        <segue reference="MKs-j9-8if"/>
         <segue reference="yoV-Ft-SdU"/>
+        <segue reference="8z9-2I-Aav"/>
+        <segue reference="mc5-hR-uZB"/>
     </inferredMetricsTieBreakers>
 </document>
