@@ -25,7 +25,7 @@ let BlockNodeCategoryName = "blockNode"
 let MaxBallAcceleration: CGFloat = 400
 let MaxBallSpeed: CGFloat = 200
 //percentage of energy ball retains after hitting wall .1 => 10% of energy retained -no longer used
-let BorderCollisionDamping: CGFloat = 0.7
+let BorderCollisionDamping: CGFloat = 1.5
 //added SKPhysicis Contact Delegate if hopes of using for colusion
 class GameScene: SKScene, SKPhysicsContactDelegate  {
     
@@ -52,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
        // physicsWorld.gravity = CGVectorMake(0, 0)
         // physicsWorld.contactDelegate = self
         //adds a physics body around the ball
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/1.8)
         //Sets the sprite to be dynamic. This means that the physics engine will not control the movement of the monster – you will through the code you’ve already written (using move actions).
         ball.physicsBody?.dynamic = true
         
@@ -155,13 +155,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         var collidedWithVerticalBorder = false
         var collidedWithHorizontalBorder = false
         
-        // 4
-        newX = min(size.width, max(0, newX))
-        newY = min(size.height, max(0, newY))
+        if newX < 0 {
+            newX = 0
+            collidedWithVerticalBorder = true
+        } else if newX > size.width {
+            newX = size.width
+            collidedWithVerticalBorder = true
+        }
+        
+        if newY < 0 {
+            newY = 0
+            collidedWithHorizontalBorder = true
+        } else if newY > size.height {
+            newY = size.height
+            collidedWithHorizontalBorder = true
+        }
+        
+        if collidedWithVerticalBorder {
+            ballAcceleration.dx = -ballAcceleration.dx * BorderCollisionDamping
+            ballVelocity.dx = -ballVelocity.dx * BorderCollisionDamping
+            ballAcceleration.dy = ballAcceleration.dy * BorderCollisionDamping
+            ballVelocity.dy = ballVelocity.dy * BorderCollisionDamping
+        }
+        
+        if collidedWithHorizontalBorder {
+            ballAcceleration.dx = ballAcceleration.dx * BorderCollisionDamping
+            ballVelocity.dx = ballVelocity.dx * BorderCollisionDamping
+            ballAcceleration.dy = -ballAcceleration.dy * BorderCollisionDamping
+            ballVelocity.dy = -ballVelocity.dy * BorderCollisionDamping
+        }
         
         ball.position = CGPoint(x: newX, y: newY)
         
-        if (ball.position.x > 495.1 && ball.position.y > 1065.6) {
+        if (ball.position.x > 540.1 && ball.position.y > 1065.6) {
             //Go to win screen
            LevelWon = true
             
