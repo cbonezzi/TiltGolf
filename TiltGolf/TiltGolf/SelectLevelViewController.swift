@@ -18,13 +18,11 @@ class SelectLevelViewController: UIViewController {
     
     @IBAction func startgamePressed(sender: UIButton) {
         
-      //should say if sender.tag <= levelUnlocked
         if (sender.tag <= LevelUnlocked)
         {
-       CurrentLevel = sender.tag
+            CurrentLevel = sender.tag
        
-        
-        self.performSegueWithIdentifier("startgame_segue", sender: self)
+            self.performSegueWithIdentifier("startgame_segue", sender: self)
         }
         
     }
@@ -50,7 +48,6 @@ class SelectLevelViewController: UIViewController {
         var levels = 0
         levels += levelUnlocked.toInt()!
         LevelUnlocked = levels
-       // if levels <= levelButtons.count {
             for var i = 0; i < levels; i++ {
                 
                 let newImage = UIImage(named:"small_unlock_image")
@@ -58,7 +55,6 @@ class SelectLevelViewController: UIViewController {
                 let button = levelButtons[i]
                 button.setBackgroundImage(newImage, forState: UIControlState.Normal)
             }
-        //}
      
 
     }

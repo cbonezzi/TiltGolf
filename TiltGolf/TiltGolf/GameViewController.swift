@@ -39,9 +39,6 @@ extension SKNode {
                 return scene
             }
             
-
-
-   
            
         } else {
             return nil
@@ -55,22 +52,7 @@ class GameViewController: UIViewController {
     var counter = 45.0
     var timer = NSTimer()
     override func viewDidLoad() {
-       
-        /*
-
-        let alertController = UIAlertController(title: "High Scores: " , message : "high score is: 00:00",  preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-        }
-        alertController.addAction(cancelAction)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-        }
-        alertController.addAction(OKAction)
-        
-        self.presentViewController(alertController, animated: true) {
-        }
-        */
         countingLabel.text = String(format:"%.2f", counter)
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
@@ -112,7 +94,6 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
-   
         }
         }
         
@@ -152,6 +133,16 @@ class GameViewController: UIViewController {
         countingLabel.text = String(format:"%.2f", counter)
         if (LevelWon == true) {
             timer.invalidate()
+            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            // store current counter in order to retrieve it on the win view controller
+            // need to use an array!
+            let CurrentCounteFromNSUD = defaults.stringForKey("CurrentCounter")
+            var counter : String = countingLabel.text!
+            defaults.setObject(counter, forKey: "CurrentCounter")
+            // end for storing
+            
             self.performSegueWithIdentifier("WinController", sender: self)
 
             

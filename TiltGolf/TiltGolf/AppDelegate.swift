@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // used for keeping record of levels
         let defaults = NSUserDefaults.standardUserDefaults()
         let level = 1
         let levelUnlocked = defaults.stringForKey("level")
@@ -26,6 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             defaults.setObject(levelLevelString, forKey: "level")
             return true
+        }
+        
+        // highscores are getting stored on the NSDU file now need to 
+        // create logic to store 27 of them and depending on the level store on the 
+        // correct index.
+        // used for keeping record of highest scores
+        let highscoreDefault = NSUserDefaults.standardUserDefaults()
+        var highScoresObject: [AnyObject] = []
+        let highScores = defaults.stringForKey("CurrentScores")
+        let maxHighScores = 27
+        
+        if highScores == nil {
+            
         }
         
         return true

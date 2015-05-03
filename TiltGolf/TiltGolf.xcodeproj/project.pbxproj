@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D3A188A1AE0AE3A00D91576 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */; };
+		9D3D9DD61AF18B7A003BFDB9 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D9DD51AF18B7A003BFDB9 /* HighScoreViewController.swift */; };
 		9DB0BABD1AE84D660040214F /* adc-51jfsfo106_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DB0BABC1AE84D660040214F /* adc-51jfsfo106_8.jpg */; };
 		9DB0BABF1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB0BABE1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png */; };
 		9DB0BAC11AE856F50040214F /* niXn6jAiB.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9DB0BAC01AE856F50040214F /* niXn6jAiB.gif */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		9D3A18891AE0AE3A00D91576 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		9D3D9DD51AF18B7A003BFDB9 /* HighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
 		9DB0BABC1AE84D660040214F /* adc-51jfsfo106_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "adc-51jfsfo106_8.jpg"; sourceTree = "<group>"; };
 		9DB0BABE1AE855DA0040214F /* 1429759078_Minion-playing-golf-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1429759078_Minion-playing-golf-icon.png"; sourceTree = "<group>"; };
 		9DB0BAC01AE856F50040214F /* niXn6jAiB.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = niXn6jAiB.gif; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				DB189C721ACCDFF3001F2F94 /* GameViewController.swift */,
 				DBB40C0E1AD4CBBC00497157 /* UserViews.swift */,
 				DBB40C101AD4DE3600497157 /* SelectLevelViewController.swift */,
+				9D3D9DD51AF18B7A003BFDB9 /* HighScoreViewController.swift */,
 				DB189C741ACCDFF3001F2F94 /* Main.storyboard */,
 				DB189C771ACCDFF3001F2F94 /* Images.xcassets */,
 				DB189C791ACCDFF3001F2F94 /* LaunchScreen.xib */,
@@ -327,6 +330,7 @@
 				9DBC3BCB1AED98F000F1FCB0 /* GameSceneLevel8.swift in Sources */,
 				9DBC3BB51AED981600F1FCB0 /* GameSceneLevel2.swift in Sources */,
 				9DBC3BC91AED98F000F1FCB0 /* GameSceneLevel7.swift in Sources */,
+				9D3D9DD61AF18B7A003BFDB9 /* HighScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
