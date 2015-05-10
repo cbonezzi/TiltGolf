@@ -14,7 +14,6 @@ var CurrentLevel = 1;
 var CurrentTime = 0.0;
 
 var HSPointsObj : [AnyObject] = []
-var HSPointsArr : [String] = []
 
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
@@ -37,12 +36,46 @@ extension SKNode {
                 archiver.finishDecoding()
                 return scene
             }
-            else
+            else if (CurrentLevel == 3)
             {
                 let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel3
                 archiver.finishDecoding()
                 return scene
             }
+            else if (CurrentLevel == 4)
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel4
+                archiver.finishDecoding()
+                return scene
+            } else if (CurrentLevel == 5)
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel5
+                archiver.finishDecoding()
+                return scene
+            } else if (CurrentLevel == 6)
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel6
+                archiver.finishDecoding()
+                return scene
+            } else if (CurrentLevel == 7)
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel7
+                archiver.finishDecoding()
+                return scene
+            } else if (CurrentLevel == 8)
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel8
+                archiver.finishDecoding()
+                return scene
+            }
+                
+            else
+            {
+                let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameSceneLevel9
+                archiver.finishDecoding()
+                return scene
+            }
+
             
            
         } else {
@@ -54,10 +87,11 @@ extension SKNode {
 class GameViewController: UIViewController {
     
     @IBOutlet var countingLabel: UILabel!
-    
+    var levelTimes = [Double](count: 9, repeatedValue: 25.00)
     var counter = 45.0
     var timer = NSTimer()
     override func viewDidLoad() {
+        levelTimes[0] = 20.0
         
         countingLabel.text = String(format:"%.2f", counter)
         
@@ -65,8 +99,9 @@ class GameViewController: UIViewController {
 
         super.viewDidLoad()
         LevelWon = false
+        counter = levelTimes[CurrentLevel-1]
+
         if CurrentLevel == 1 {
-            counter = 20.0
             if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
                 // Configure the view.
                 let skView = self.view as! SKView
@@ -85,7 +120,6 @@ class GameViewController: UIViewController {
             
         }
         if CurrentLevel == 2 {
-            counter = 25.0
 
         if let scene = GameSceneLevel2.unarchiveFromFile("GameSceneLevel2") as? GameSceneLevel2 {
             // Configure the view.
@@ -104,7 +138,6 @@ class GameViewController: UIViewController {
         }
         
             if CurrentLevel == 3 {
-                counter = 25.0
                 
                 if let scene = GameSceneLevel3.unarchiveFromFile("GameSceneLevel3") as? GameSceneLevel3 {
                     // Configure the view.
@@ -121,7 +154,118 @@ class GameViewController: UIViewController {
                     skView.presentScene(scene)
                     
                 }
+                
         }
+      
+        if CurrentLevel == 4 {
+            
+            if let scene = GameSceneLevel4.unarchiveFromFile("GameSceneLevel4") as? GameSceneLevel4 {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+        }
+        if CurrentLevel == 5 {
+            
+            if let scene = GameSceneLevel5.unarchiveFromFile("GameSceneLevel5") as? GameSceneLevel5 {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+        }
+        if CurrentLevel == 6 {
+            
+            if let scene = GameSceneLevel6.unarchiveFromFile("GameSceneLevel6") as? GameSceneLevel6 {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+        }
+        if CurrentLevel == 7 {
+            
+            if let scene = GameSceneLevel7.unarchiveFromFile("GameSceneLevel7") as? GameSceneLevel7 {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+        }
+        if CurrentLevel == 8 {
+            
+            if let scene = GameSceneLevel8.unarchiveFromFile("GameSceneLevel8") as? GameSceneLevel8 {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+        }
+        if CurrentLevel == 9 {
+            
+            if let scene = GameSceneLevel9.unarchiveFromFile("GameSceneLevel9") as? GameSceneLevel9 {
+                // Configure the view.
+                let skView = self.view as! SKView
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = false
+                
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+                
+            }
+        }
+
     }
     
   
@@ -133,7 +277,7 @@ class GameViewController: UIViewController {
         countingLabel.text = String(format:"%.2f", counter)
         if (LevelWon == true) {
             timer.invalidate()
-            CurrentTime = 25.0 - counter
+            CurrentTime = levelTimes[CurrentLevel-1] - counter
             let defaults = NSUserDefaults.standardUserDefaults()
 
             self.performSegueWithIdentifier("WinController", sender: self)
