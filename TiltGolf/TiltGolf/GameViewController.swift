@@ -11,6 +11,11 @@ import SpriteKit
 import Foundation
 var LevelWon = false
 var CurrentLevel = 1;
+var CurrentTime = 0.0;
+
+var HSPointsObj : [AnyObject] = []
+var HSPointsArr : [String] = []
+
 extension SKNode {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
         if let path = NSBundle.mainBundle().pathForResource(file as String, ofType: "sks") {
@@ -49,6 +54,7 @@ extension SKNode {
 class GameViewController: UIViewController {
     
     @IBOutlet var countingLabel: UILabel!
+    
     var counter = 45.0
     var timer = NSTimer()
     override func viewDidLoad() {
@@ -118,14 +124,8 @@ class GameViewController: UIViewController {
         }
     }
     
-    
-     func winScreen(){
-        
-        self.performSegueWithIdentifier("LoseController", sender: self)
-        
-        
-    }
-    
+  
+  
     
     func updateCounter() {
         counter = counter - 0.01
@@ -133,19 +133,10 @@ class GameViewController: UIViewController {
         countingLabel.text = String(format:"%.2f", counter)
         if (LevelWon == true) {
             timer.invalidate()
-            
+            CurrentTime = 25.0 - counter
             let defaults = NSUserDefaults.standardUserDefaults()
-            
-            // store current counter in order to retrieve it on the win view controller
-            // need to use an array!
-            let CurrentCounteFromNSUD = defaults.stringForKey("CurrentCounter")
-            var counter : String = countingLabel.text!
-            defaults.setObject(counter, forKey: "CurrentCounter")
-            // end for storing
-            
-            self.performSegueWithIdentifier("WinController", sender: self)
 
-            
+            self.performSegueWithIdentifier("WinController", sender: self)
         }
         if (counter < 0.01) {
             timer.invalidate()

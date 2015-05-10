@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 import SpriteKit
 
+
+
 class WinViewController: UIViewController {
+    
+    @IBOutlet weak var highScoreLabel1: UILabel!
+    @IBOutlet weak var highScoreLabel2: UILabel!
+    @IBOutlet weak var highScoreLabel3: UILabel!
+
     
     var currentLevelScore : String = String()
     
@@ -19,10 +26,7 @@ class WinViewController: UIViewController {
         self.performSegueWithIdentifier("startgame_segue", sender: self)
     }
     
-    @IBAction func highscoresPressed(sender: AnyObject) {
-        
-        self.performSegueWithIdentifier("highscores_segue", sender: self)
-    }
+   
     @IBAction func SelectLevelPressed() {
 
         self.performSegueWithIdentifier("selectlevel_segue", sender: self)
@@ -32,14 +36,7 @@ class WinViewController: UIViewController {
         if (segue.identifier == "selectlevel_segue") {
             var childVC : SelectLevelViewController = segue.destinationViewController as! SelectLevelViewController
         }
-        if (segue.identifier == "highscores_segue") {
-            var childVC : HighScoreViewController = segue.destinationViewController as! HighScoreViewController
-//            var curLevel = CurrentLevel
-//            curLevel = curLevel - 1
-//            childVC.levelLabel.text = toString(curLevel)
-//            childVC.firstHighScoreLabel.text = currentLevelScore
-            
-        }
+       
         else if (segue.identifier == "startgame_segue") {
             var childVC : GameViewController = segue.destinationViewController as! GameViewController
         }
@@ -61,22 +58,102 @@ class WinViewController: UIViewController {
             LevelUnlocked = levels
             defaults.setObject(toString(levels), forKey: "level")
         }
-        
-        // here is where we store the current score for this level
-        // on the NSUD file
-        let currentcounterNSUD = defaults.stringForKey("CurrentCounter")
-        var Counter : String = currentcounterNSUD!
-        currentLevelScore = currentcounterNSUD!
-        //let highScore = default.stringForKey("HighScores")
-        defaults.setObject(Counter, forKey: "CurrentScore")
-        // maybe we can use a dictionary and we store the level and the score then match those
-        // look up high score and determine what if is on the top three
-        // end of storing
-        
-        
-        //var levels = 0
-
+        checkCurrentScoreWithHighScore()
+     
     }
+    
+    func checkCurrentScoreWithHighScore() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let HighScoresList = defaults.stringArrayForKey("HighScores") {
+            HSPointsObj = HighScoresList as Array
+            
+        }
+        
+        defaults.setObject(HSPointsObj, forKey: "HighScores")
+        var index = 0
+        
+        var highScoresAtCurrentLevel = (CurrentLevel - 1) * 3 + 2
+        var highScoresAsDouble = [Double](count: 27, repeatedValue: 0.00)
+        
+        for (index, string) in enumerate(HSPointsObj) {
+            highScoresAsDouble[index] = string.doubleValue
+        }
+        
+        if (CurrentTime < highScoresAsDouble[highScoresAtCurrentLevel] ) {
+            
+            if (CurrentTime < highScoresAsDouble[highScoresAtCurrentLevel - 1] ){
+                
+                if (CurrentTime < highScoresAsDouble[highScoresAtCurrentLevel - 2] ) {
+                    //make first one blue
+                    highScoreLabel1.text = String(format:"%.2f", CurrentTime)
+                    highScoreLabel2.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 2])
+                    highScoreLabel3.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 1])
+                    
+                    highScoreLabel1.textColor = UIColor.blueColor()
+                    highScoreLabel3.textColor = UIColor.blackColor()
+                    highScoreLabel2.textColor = UIColor.blackColor()
+                    
+                    HSPointsObj.removeAtIndex(highScoresAtCurrentLevel)
+                    var thirdHS: AnyObject = HSPointsObj.removeAtIndex(highScoresAtCurrentLevel-1)
+                    var secondHS = HSPointsObj.removeAtIndex(highScoresAtCurrentLevel-2)
+                    
+                    HSPointsObj.insert(String(format:"%.2f", CurrentTime), atIndex: highScoresAtCurrentLevel-2)
+                    HSPointsObj.insert(secondHS, atIndex: highScoresAtCurrentLevel-1)
+                    
+                    HSPointsObj.insert(thirdHS, atIndex: highScoresAtCurrentLevel)
+                    
+                    
+                    
+                }
+                else {
+                    //make 2nd one blue
+                    highScoreLabel2.text = String(format:"%.2f", CurrentTime)
+                    highScoreLabel1.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 2])
+                    highScoreLabel3.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 1])
+                    highScoreLabel2.textColor = UIColor.blueColor()
+                    highScoreLabel1.textColor = UIColor.blackColor()
+                    highScoreLabel3.textColor = UIColor.blackColor()
+                    HSPointsObj.removeAtIndex(highScoresAtCurrentLevel)
+                    var thirdHS: AnyObject = HSPointsObj.removeAtIndex(highScoresAtCurrentLevel-1)
+                    
+                    HSPointsObj.insert(String(format:"%.2f", CurrentTime), atIndex: highScoresAtCurrentLevel-1)
+                    
+                    HSPointsObj.insert(thirdHS, atIndex: highScoresAtCurrentLevel)
+                    
+                }
+                
+            }
+            else {
+                //make 2nd one blue
+                highScoreLabel3.text = String(format:"%.2f", CurrentTime)
+                highScoreLabel1.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 2])
+                highScoreLabel2.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 1])
+                highScoreLabel3.textColor = UIColor.blueColor()
+                
+                highScoreLabel1.textColor = UIColor.blackColor()
+                
+                highScoreLabel2.textColor = UIColor.blackColor()
+                HSPointsObj.removeAtIndex(highScoresAtCurrentLevel)
+                HSPointsObj.insert(String(format:"%.2f", CurrentTime), atIndex: highScoresAtCurrentLevel)
+            }
+            
+        }
+        
+        else {
+            highScoreLabel3.text = toString(highScoresAsDouble[highScoresAtCurrentLevel])
+            highScoreLabel1.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 2])
+            highScoreLabel2.text = toString(highScoresAsDouble[highScoresAtCurrentLevel - 1])
+            highScoreLabel3.textColor = UIColor.blackColor()
+
+            highScoreLabel1.textColor = UIColor.blackColor()
+
+            highScoreLabel2.textColor = UIColor.blackColor()
+
+        }
+        
+        defaults.setObject(HSPointsObj, forKey: "HighScores")
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.

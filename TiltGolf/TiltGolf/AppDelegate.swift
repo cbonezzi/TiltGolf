@@ -26,20 +26,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var levelLevelString: String = toString(level)
             
             defaults.setObject(levelLevelString, forKey: "level")
-            return true
         }
         
         // highscores are getting stored on the NSDU file now need to 
         // create logic to store 27 of them and depending on the level store on the 
         // correct index.
         // used for keeping record of highest scores
-        let highscoreDefault = NSUserDefaults.standardUserDefaults()
-        var highScoresObject: [AnyObject] = []
-        let highScores = defaults.stringForKey("CurrentScores")
-        let maxHighScores = 27
-        
-        if highScores == nil {
+        //let highscoreDefault = NSUserDefaults.standardUserDefaults()
+        let defaultValues = NSUserDefaults.standardUserDefaults()
+        let highScores = defaultValues.stringArrayForKey("HighScores")
+        if (highScores == nil){
             
+            var highScoresObject: [AnyObject] = []
+            
+            
+            let maxHighScores = 26
+        
+        
+            for index in 0...maxHighScores {
+                highScoresObject.append(toString(60.00))
+                defaultValues.setObject(highScoresObject, forKey: "HighScores")
+            }
         }
         
         return true
