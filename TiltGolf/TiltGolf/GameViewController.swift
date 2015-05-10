@@ -284,6 +284,7 @@ class GameViewController: UIViewController {
         }
         if (counter < 0.01) {
             timer.invalidate()
+            let skView = self.view as! SKView
 
             self.performSegueWithIdentifier("LoseController", sender: self)
             
