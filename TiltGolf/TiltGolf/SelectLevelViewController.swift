@@ -27,10 +27,16 @@ class SelectLevelViewController: UIViewController {
         
     }
     
+    @IBAction func backPressed(sender: UIButton) {
+        self.performSegueWithIdentifier("back_to_main_segue", sender: self)
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "startgame_segue") {
             var childVC : GameViewController = segue.destinationViewController as! GameViewController
        
+        }
+        if (segue.identifier == "back_to_main_segue") {
+            var childVC : UserViews = segue.destinationViewController as! UserViews
         }
     }
     

@@ -91,7 +91,10 @@ class GameViewController: UIViewController {
     var counter = 45.0
     var timer = NSTimer()
     override func viewDidLoad() {
-        levelTimes[0] = 20.0
+        levelTimes[0] = 30.0
+        levelTimes[3] = 30.0
+        levelTimes[4] = 35.0
+        
         
         countingLabel.text = String(format:"%.2f", counter)
         
