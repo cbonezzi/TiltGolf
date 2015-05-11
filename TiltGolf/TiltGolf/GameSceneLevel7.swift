@@ -161,7 +161,7 @@ class GameSceneLevel7: SKScene, SKPhysicsContactDelegate  {
         
         ball.position = CGPoint(x: newX, y: newY)
         
-        if (ball.position.x < 94 && ball.position.y > 1020.6) {
+        if (ball.position.x < 106 && ball.position.y > 1000.6) {
             LevelWon = true
             ball.position = CGPoint(x: 10, y: 10)
             stopMonitoringAcceleration()
